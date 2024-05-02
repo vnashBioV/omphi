@@ -2,32 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+body{
+    @apply font-poppins text-white xl:mt-[118px] bg-white relative;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.banner-ball{
+    background-image: linear-gradient(326deg, #F9FF73 10%, #F49609 90%);
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.banner-ball-op{
+    background-image: linear-gradient(326deg,  #F49609 10%, #F9FF73 90%);
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.primary-color{
+    @apply bg-[#1D053C]
+}
+
+.secondary-color-border{
+    @apply border-[#F9FF73]
+}
+.secondary-color-background{
+    @apply  bg-[#F9FF73]
+}
+
+.BtnEffect {
+    z-index: 1;
+}
+
+.BtnEffect::after {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: translateX(-100%);
+    transition: transform 600ms cubic-bezier(0, .70, .60, 1);
+}
+
+.BtnEffect:hover::after {
+    transform: translateX(0);
+}
+
+
+.center{
+    @apply flex justify-center items-center
+}
+
+.reset-spaces{
+    @apply m-0 p-0
+}
+
+*{
+    @apply m-0 p-0 box-border
+}
+
+.active{
+    @apply tracking-wide border-b-[1px] xl:border-black border-white
 }
