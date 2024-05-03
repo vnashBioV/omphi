@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/Nav.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/Nav.jsx", "src/components/About.jsx", "src/components/Banner.jsx", "src/components/Contact.jsx", "src/components/CustomButton.jsx", "src/components/Footer.jsx", "src/components/Header.jsx", "src/components/Posts.jsx", "src/components/Services.jsx"],
   "exclude": ["node_modules"]
 }

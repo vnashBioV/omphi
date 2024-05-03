@@ -3,14 +3,8 @@ import React from 'react';
 import { Link } from 'react-scroll';
 import { useMediaQuery } from 'react-responsive';
 
-// Define the type for the link object
-type LinkItem = {
-    path: string;
-    name: string;
-};
-
 // Array of link items
-const links: LinkItem[] = [
+const links = [
     {
         path: 'home',
         name: 'Home',
@@ -33,14 +27,9 @@ const links: LinkItem[] = [
     },
 ];
 
-// Define the props type for the Nav component
-type NavProps = {
-    containerStyles: string;
-    linkStyles: string;
-};
 
 // Nav component with TypeScript
-const Nav: React.FC<NavProps> = ({containerStyles, linkStyles}) => {
+const Nav = ({containerStyles, linkStyles}) => {
     // Media query hook to determine if it's desktop or not
     const isDesktop = useMediaQuery({
         query: '(min-width: 1310px)',
