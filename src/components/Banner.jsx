@@ -84,9 +84,12 @@ const Banner = () => {
             <MouseParallaxChild 
                 factorX={0.4} 
                 factorY={0.8} 
-                className="relative w-full h-full"
+                className="relative w-full h-full flex justify-center items-center"
               >
-              <MobileScene />
+                <div className='w-[397px] h-[611px]'>
+                  <Image src="moblephoneOne.svg" className='w-full h-full object-cover' width={397} height={611}/>
+                </div>
+              
             </MouseParallaxChild>
           </MouseParallaxContainer>
       </motion.div>
