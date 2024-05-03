@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic';
 import { FaArrowRight } from "react-icons/fa";
 import { MdSend } from "react-icons/md";
 import {MouseParallaxContainer, MouseParallaxChild} from 'react-parallax-mouse'
+import { Link } from 'react-scroll';
 
 //framer motion
 import {motion} from 'framer-motion'
@@ -56,16 +57,25 @@ const Banner = () => {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}  
         >
-          <p className={`text-black text-[2rem]  ${send ? "border-0 tracking-wide" : "border-b-[2px] border-black"} transition-all duration-300  ease-in-out w-fit`}>Get in touch</p>
-          <div 
-            className={`h-[58px] w-[58px] cursor-pointer rounded-full flex transition-all ease-in-out duration-500 justify-center ${send ? "bg-white" : "bg-black"} items-center ml-6`}
+          <Link
+            to="contact"
+            smooth={true}
+            spy
+            offset={-50}
+            className='flex justify-between items-center'
           >
-            {!send ? 
-              <FaArrowRight className='text-white transition-all duration-300 text-[1.5rem]'/>
-              :
-              <MdSend className='text-[1.5rem] text-black transition-all duration-300'/>
-            }
-          </div>
+            <p className={`text-black text-[2rem]  ${send ? "border-0 tracking-wide" : "border-b-[2px] border-black"} transition-all duration-300  ease-in-out w-fit`}>Get in touch</p>
+            <div 
+              className={`h-[58px] w-[58px] cursor-pointer rounded-full flex transition-all ease-in-out duration-500 justify-center ${send ? "bg-white" : "bg-black"} items-center ml-6`}
+            >
+              {!send ? 
+                <FaArrowRight className='text-white transition-all duration-300 text-[1.5rem]'/>
+                :
+                <MdSend className='text-[1.5rem] text-black transition-all duration-300'/>
+              }
+            </div>
+          </Link>
+         
         </motion.div>
         
       </div>

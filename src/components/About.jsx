@@ -36,7 +36,7 @@ const About = () => {
                 <MouseParallaxChild 
                     factorX={0.4} 
                     factorY={0.8} 
-                    className="relative w-full flex justify-center items-center h-full"
+                    className="relative w-full flex justify-center items-end h-full"
                   >
                     {/* <div className='w-full flex juce items-center h-full'> */}
                       <Image src="/about-tshilitech.png" width={4448} height={2664} className='object-cover' alt='files'/>
