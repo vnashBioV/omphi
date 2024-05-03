@@ -70,8 +70,8 @@ const Contact = () => {
                 <textarea 
                   name="" 
                   id="" 
-                  cols="30" 
-                  rows="10"
+                  cols={30} 
+                  rows={10}
                   className='w-[100%] h-[9rem] resize-none border-none bg-[#EAE6E6] placeholder:text-black placeholder:text-[.9rem] outline-none px-6 py-4 text-[1rem] rounded-[20px] text-black' 
                   placeholder="Message"
                 >
