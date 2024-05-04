@@ -1,7 +1,8 @@
-import type { Metadata } from "next";
+'use client'
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Poppins } from 'next/font/google'
+import { usePathname } from 'next/navigation'
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,22 +16,26 @@ const poppins = Poppins({
   variable: '--font-poppins',
 });
 
-export const metadata: Metadata = {
-  title: "Tshilitech",
-  description: "Designing Websites, Apps, and Digital Solutions Tailored Just for You",
-};
+
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  
+  const pathname = usePathname()
+
+  const noHeaderFooterRoutes = '/store';
+  
+  const hideHeaderFooter = pathname === noHeaderFooterRoutes
+
   return (
     <html lang="en">
       <body className={`${poppins.variable}`}>
-        <Header/>
+        {!hideHeaderFooter && <Header />}
         {children}
-        <Footer/>
+        {!hideHeaderFooter && <Footer />}
       </body>
     </html>
   );

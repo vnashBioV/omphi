@@ -49,17 +49,17 @@ const About = () => {
             initial='hidden'
             whileInView={'show'}
             viewport={{once: false, amount: 0.3}} 
-            className='xl:w-[37%] w-[100%] xl:h-[520px] h-[300px] flex xl:items-end'
+            className='xl:w-[30%] w-[100%] xl:h-[620px] h-[300px] flex xl:items-end'
           >
               <p className='text-black text-[1.1rem]'>
-                Crafting digital product that dazzle and delight 
-                is the jam! all about pushing boundaries and 
-                stepping out of comfort zone to create something 
-                truly extraordinary. Driven by a passion for 
-                learning and thrive on staying ahead of the 
-                curve when it comes to new technologies and 
-                design trends. Let's innovate, create, and 
-                make magic happen together! 
+                Creating digital products that captivate and inspire 
+                is the goal! pushing the 
+                limits and exploring new horizons to craft 
+                something truly remarkable. The passion for 
+                learning and always on the cutting edge of 
+                technology and design trends. Let's join 
+                forces, spark innovation, and make some magic 
+                together!
               </p>
           </motion.div>
           <motion.div 

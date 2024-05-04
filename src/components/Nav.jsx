@@ -2,6 +2,9 @@
 import React from 'react';
 import { Link } from 'react-scroll';
 import { useMediaQuery } from 'react-responsive';
+import NextLink  from 'next/link';
+
+import { useRouter } from 'next/navigation'
 
 // Array of link items
 const links = [
@@ -21,10 +24,10 @@ const links = [
         path: 'posts',
         name: 'Posts',
     },
-    {
-        path: 'store',
-        name: 'Store',
-    },
+    // {
+    //     path: 'store',
+    //     name: 'Store',
+    // },
 ];
 
 
@@ -35,11 +38,13 @@ const Nav = ({containerStyles, linkStyles}) => {
         query: '(min-width: 1310px)',
     });
 
+    const router = useRouter()
+
     return (
       <nav className={`${containerStyles}`}>
         {links.map((link, index) => {
           return (
-              <Link 
+              <Link
                   to={link.path} 
                   className={`${linkStyles} cursor-pointer ml-[2rem] font-[400] text-black hover:tracking-wide text-[.9rem] hover:border-b-[1px] hover:border-black transition-all duration-300`}
                   key={index}
@@ -52,6 +57,14 @@ const Nav = ({containerStyles, linkStyles}) => {
               </Link>
           )
         })}
+
+        <NextLink 
+            href={"/store"}
+            className={`cursor-pointer ml-[2rem] font-[400] text-black hover:tracking-wide text-[.9rem] hover:border-b-[1px] hover:border-black transition-all duration-300`}
+        >
+            Store
+        </NextLink>
+
         <div className='ml-[2.5rem] w-[130px] h-[53px] rounded-full flex justify-center items-center overflow-hidden bg-transparent'>
             <Link
                 to='contact'
