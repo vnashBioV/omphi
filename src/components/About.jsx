@@ -16,63 +16,38 @@ const AboutScene = dynamic(() => import('@/components/scenes/AboutScene'), {
 const About = () => {
   return (
     <section 
-      className='w-full flex justify-center items-center relative'
+      className='w-full bg-black flex justify-center items-center relative xl:mb-[15rem] mb-[5rem]'
       id='about'
     >
-        <div className='container xl:mt-[4rem] xl:px-0 px-6 xl:mb-[15rem] mb-[5rem] flex flex-col xl:flex-row justify-between items-center'>
-          <motion.div 
-            variants={fadeIn('right', 0)}
-            initial='hidden'
-            whileInView={'show'}
-            viewport={{once: false, amount: 0.3}} 
-            className='xl:w-[30%] w-[100%] xl:h-[520px] h-[350px]'
-          >
-            {/* 3D */}
-            <MouseParallaxContainer 
-              globalFactorX={0.1} 
-              globalFactorY={0.2} 
-              resetOnLeave
-              className='w-full cursor-grab flex flex-row relative justify-end h-full'>
-                <MouseParallaxChild 
-                    factorX={0.4} 
-                    factorY={0.8} 
-                    className="relative w-full flex justify-center items-end h-full"
-                  >
-                    {/* <div className='w-full flex juce items-center h-full'> */}
-                      <Image src="/about-tshilitech.png" width={4448} height={2664} className='object-cover' alt='files'/>
-                    {/* </div> */}
-                </MouseParallaxChild>
-              </MouseParallaxContainer>
-          </motion.div>
-          <motion.div 
-            variants={fadeIn('up', 2)}
-            initial='hidden'
-            whileInView={'show'}
-            viewport={{once: false, amount: 0.3}} 
-            className='xl:w-[30%] w-[100%] xl:h-[620px] h-[300px] flex xl:items-end'
-          >
-              <p className='text-black text-[1.1rem]'>
-                Creating digital products that captivate and inspire 
-                is the goal! pushing the 
-                limits and exploring new horizons to craft 
-                something truly remarkable. The passion for 
-                learning and always on the cutting edge of 
-                technology and design trends. Let's join 
-                forces, spark innovation, and make some magic 
-                together!
-              </p>
-          </motion.div>
-          <motion.div 
-            variants={fadeIn('left', 0)}
-            initial='hidden'
-            whileInView={'show'}
-            viewport={{once: false, amount: 0.3}} 
-            className='xl:w-[30%] w-full relative flex justify-end'
-          >
-            <div className=' xl:w-[291px] w-full xl:h-[340px] h-fit p-6 xl:p-0 rounded-[2rem] border-[.6rem] border-black'>
-              <p className='text-black text-right font-[600] left-[-102%] h-[194px] flex justify-center items-center top-[22%] xl:bg-[white] xl:text-[3.5rem] text-[2rem] xl:absolute'>At heart, innovation, design, <br className='xl:flex hidden'/> and building.</p>
+        <div className='container xl:my-[4rem] xl:px-0 px-6  flex flex-col xl:flex-row justify-between items-center'>
+          <div className='w-[45%] flex justify-center items-center h-[500px]'>
+              <Image src="/about-me.png" width={2096} height={3240} alt='about us' className='w-full h-full object-contain' />
+          </div>
+          <div className='xl:w-[55%] w-full flex xl:flex-row flex-col justify-between items-center pl-18 py-6'>
+            <div className='xl:w-[30%] w-full h-[500px]'>
+              <Image src="/about-pfari.png" width={884} height={2140} alt='about us' className='w-full h-full object-contain' />
             </div>
-          </motion.div>
+            <div className='xl:w-[70%] w-full'>
+              <p className='text-[3rem] text-end font-[500]'>We Let <span className='text-[5rem]'>Creativity</span> <br />  Define Us</p>
+              <div className='w-full flex mt-3 h-fit justify-end items-center'>
+                <div className='w-[200px] h-[5px]  bg-white'></div>
+                <div className='w-[9px] ml-3 h-[9px] rounded-full bg-white'></div>
+                <div className='w-[9px] ml-3 h-[9px] rounded-full bg-[grey]'></div>
+                <div className='w-[9px] ml-3 h-[9px] rounded-full bg-white'></div>
+              </div>
+              <div className='w-full flex justify-end items-center'>
+                <p className='mt-10 w-[70%] font-light text-end text-[.8rem]'>
+                  Creating digital products that dazzle and delight is 
+                  the jam! all about pushing boundaries and stepping out 
+                  of comfort zone to create something truly amazing. 
+                  Driven by a passion for learning and thrive on staying 
+                  ahead of the curve when it comes to new technologies 
+                  and design trends. Let's innovate, create, and make 
+                  magic happen together!
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
     </section>
     
