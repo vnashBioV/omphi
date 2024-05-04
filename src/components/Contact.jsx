@@ -48,7 +48,7 @@ const Contact = () => {
                 />
               </motion.div>
               <motion.div 
-                variants={fadeIn('up', 1)}
+                variants={fadeIn('up', 0.1)}
                 initial='hidden'
                 whileInView={'show'}
                 viewport={{once: false, amount: 0.3}} 
@@ -61,7 +61,7 @@ const Contact = () => {
                 />
               </motion.div>
               <motion.div 
-                variants={fadeIn('up', 2)}
+                variants={fadeIn('up', 0.2)}
                 initial='hidden'
                 whileInView={'show'}
                 viewport={{once: false, amount: 0.3}} 
@@ -78,7 +78,7 @@ const Contact = () => {
                 </textarea>
               </motion.div>
               <motion.div 
-                variants={fadeIn('up', 3)}
+                variants={fadeIn('up', 0.3)}
                 initial='hidden'
                 whileInView={'show'}
                 viewport={{once: false, amount: 0.3}} 
