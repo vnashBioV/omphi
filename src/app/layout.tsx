@@ -32,7 +32,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`${poppins.variable}`}>
+      <body className={`${poppins.variable} overflow-x-hidden relative`}>
         {!hideHeaderFooter && <Header />}
         {children}
         {!hideHeaderFooter && <Footer />}

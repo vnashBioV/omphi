@@ -37,61 +37,71 @@ const Services = () => {
                   services we provide.
                 </motion.p>
             </div>
+
             <motion.div 
                 variants={fadeIn('up', 0.2)}
                 initial='hidden'
                 whileInView={'show'}
                 viewport={{once: true, amount: 0.3}} 
-                className='w-full mt-[4rem] flex justify-between border-b-[3px] cursor-pointer border-[#535353] items-center py-[1rem]'
+                className='w-full flex-col xl:flex-row group mt-[4rem] flex border-b-[3px] cursor-pointer border-[#535353] justify-start py-[1rem]'
             >
-              <h3 className='text-[#535353] text-[2rem] font-[600]'>Branding</h3>
-              <div 
-                className={`h-[50px] w-[50px] cursor-pointer rounded-full flex transition-all ease-in-out duration-500 justify-center bg-[#535353] items-center ml-6`}
-              >
-                <FaArrowRight className='text-white transition-all duration-300 text-[1.5rem]'/>
-              </div>
+              <h3 className='text-[#535353] group-hover:text-[3rem] group-hover:text-black text-[2rem] transition-all duration-300 font-[600]'>Branding</h3>
+              <p className='text-black transition-all duration-300 group-hover:flex hidden xl:ml-[10rem]'>
+                Creating a unique identity and image for your product, service, 
+                company, or individual in the minds of your users or consumers. 
+                Crafting a consistent message, visual identity, 
+                and overall experience that communicates your values and
+                personality.
+              </p>
             </motion.div>
+
             <motion.div 
                 variants={fadeIn('up', 0.2)}
                 initial='hidden'
                 whileInView={'show'}
                 viewport={{once: false, amount: 0.3}} 
-              className='w-full flex justify-between border-b-[3px] cursor-pointer border-[#535353] pt-[2rem] items-center py-[1rem]'
+              className='w-full flex-col xl:flex-row group mt-[4rem] flex border-b-[3px] cursor-pointer border-[#535353] justify-start py-[1rem]'
             >
-              <h3 className='text-[#535353] text-[2rem] font-[600]'>Development</h3>
-              <div 
-                className={`h-[50px] w-[50px] cursor-pointer rounded-full flex transition-all ease-in-out duration-500 justify-center bg-[#535353] items-center ml-6`}
-              >
-                <FaArrowRight className='text-white transition-all duration-300 text-[1.5rem]'/>
-              </div>
+              <h3 className='text-[#535353] group-hover:text-[3rem] group-hover:text-black text-[2rem] transition-all duration-300 font-[600]'>Development</h3>
+              <p className='text-black transition-all duration-300 group-hover:flex hidden xl:ml-[10rem]'>
+                Creating software applications or systems through the use of programming 
+                languages, frameworks, tools, and methodologies. Through a series 
+                of stages, from conceptualization and planning to coding, testing, 
+                deployment, and maintenance.
+              </p>
             </motion.div>
+
             <motion.div 
               variants={fadeIn('up', 0.2)}
               initial='hidden'
               whileInView={'show'}
               viewport={{once: false, amount: 0.3}} 
-              className='w-full flex justify-between border-b-[3px] cursor-pointer border-[#535353] pt-[2rem] items-center py-[1rem]'
+              className='w-full flex-col xl:flex-row group mt-[4rem] flex border-b-[3px] cursor-pointer border-[#535353] justify-start py-[1rem]'
             >
-              <h3 className='text-[#535353] text-[2rem] font-[600]'>UX/UI Design</h3>
-              <div 
-                className={`h-[50px] w-[50px] cursor-pointer rounded-full flex transition-all ease-in-out duration-500 justify-center bg-[#535353] items-center ml-6`}
-              >
-                <FaArrowRight className='text-white transition-all duration-300 text-[1.5rem]'/>
-              </div>
+              <h3 className='text-[#535353] group-hover:text-[3rem] group-hover:text-black text-[2rem] whitespace-nowrap transition-all duration-300 font-[600]'>UX/UI Design</h3>
+              <p className='text-black transition-all duration-300 group-hover:flex hidden xl:ml-[10rem]'>
+                Creating user interfaces (UI) and user experiences (UX) for digital products, 
+                such as websites, mobile apps, and software applications. 
+                while these are different aspects of the design process combined make up a complete digital experience.
+              </p>
             </motion.div>
+
             <motion.div 
               variants={fadeIn('up', 0.2)}
               initial='hidden'
               whileInView={'show'}
               viewport={{once: false, amount: 0.3}} 
-              className='w-full flex justify-between border-b-[3px] cursor-pointer border-[#535353] pt-[2rem] items-center py-[1rem]'
+              className='w-full flex-col xl:flex-row group mt-[4rem] flex border-b-[3px] cursor-pointer border-[#535353] justify-start py-[1rem]'
             >
-              <h3 className='text-[#535353] text-[2rem] font-[600]'>SEO</h3>
-              <div 
-                className={`h-[50px] w-[50px] cursor-pointer rounded-full flex transition-all ease-in-out duration-500 justify-center bg-[#535353] items-center ml-6`}
-              >
-                <FaArrowRight className='text-white transition-all duration-300 text-[1.5rem]'/>
-              </div>
+              <h3 className='text-[#535353] group-hover:text-[3rem] group-hover:text-black text-[2rem] transition-all duration-300 font-[600]'>SEO</h3>
+              <p className='text-black transition-all duration-300 group-hover:flex hidden xl:ml-[10rem]'>
+                Optimizing your websites and online content to 
+                improve their visibility and ranking in search engine 
+                results pages (SERPs). The goal of SEO is to attract 
+                more organic (non-paid) traffic to your website by 
+                ensuring that it appears higher in search engine 
+                results for relevant queries.
+              </p>
             </motion.div>
         </div>
     </section>

@@ -3,7 +3,21 @@
 @tailwind utilities;
 
 body{
-    @apply font-poppins text-white xl:mt-[118px] bg-white relative;
+    @apply font-poppins text-white overflow-x-hidden xl:mt-[118px] bg-white relative;
+}
+html{
+    @apply overflow-x-hidden
+}
+
+.blog-body{    
+    /**Major Properties**/
+    overflow:hidden;
+    -webkit-box-orient: vertical;
+    display: block;
+    display: -webkit-box;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 4;
 }
 
 .banner-ball{
@@ -57,7 +71,7 @@ body{
 }
 
 *{
-    @apply m-0 p-0 box-border
+    @apply m-0 p-0
 }
 
 .active{

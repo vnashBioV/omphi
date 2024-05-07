@@ -12,9 +12,6 @@ import { Link } from 'react-scroll';
 import {motion} from 'framer-motion'
 import {fadeIn} from '../../variants'
 
-const MobileScene = dynamic(() => import('@/components/scenes/MobileScene'), {
-  ssr: false
-})
 
 const Banner = () => {
   const [send, setSend] = useState(false);
