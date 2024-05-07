@@ -81,15 +81,16 @@ const Post = ({posts}) => {
                         >
                             <div className='border xl:w-[296] w-full  rounded-[20px] h-[322px]'>
                                 <Image src={urlFor(post.mainImage).url()} width={2432} height={3648} alt='' className='object-cover rounded-[20px] w-full h-full'/>
-
                             </div>
                             <div className='w-full py-3'>
                                 <p className='text-black font-[800] xl:h-[76px] text-[1rem]'>{post.title}</p>
                                 <p className='text-black pt-3 xl:h-[89px] text-[.8rem] blog-body'>
                                     <PortableText value={post.body} components={ptComponents}/>
                                 </p>
-                                <p className='text-[black] mt-4 font-bold cursor-pointer w-fit rounded-full px-4 text-[.7rem] p-2 border-black border'>Read More</p> 
-                                <p className='text-black mt-4 text-[.8rem] flex items-center'>
+                                <div className='mt-6'>
+                                    <Link href={`/postDetail/${post.slug.current}`} className='text-[black] font-bold cursor-pointer w-fit rounded-full px-4 text-[.7rem] p-2 border-black border'>Read More</Link> 
+                                </div>
+                                <p className='text-black mt-6 text-[.8rem] flex items-center'>
                                     <IoTimer className='text-[1.3rem] mr-[.8rem]'/> {new Date(post.publishedAt).getFullYear()} {months[new Date(post.publishedAt).getMonth()]} {new Date(post.publishedAt).getDate()}
                                 </p>
                             </div>

@@ -20,6 +20,10 @@ html{
     -webkit-line-clamp: 4;
 }
 
+.blog-paragraph > p > p{
+    @apply mb-5
+}
+
 .banner-ball{
     background-image: linear-gradient(326deg, #F9FF73 10%, #F49609 90%);
 }
