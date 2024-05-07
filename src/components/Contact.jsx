@@ -63,24 +63,24 @@ const Contact = () => {
           <div className='xl:h-[650px] my-[2rem] xl:w-[65%] w-full flex flex-col justify-center'>
             <form 
               onSubmit={handleSubmit(formSubmit)}
-              className='xl:w-[50%] w-full flex flex-col h-[300px] relative'
+              className='xl:w-[50%] w-full flex flex-col xl:h-[300px] relative'
             >
               <motion.div 
                 variants={fadeIn('up', 0)}
                 initial='hidden'
                 whileInView={'show'}
                 viewport={{once: false, amount: 0.3}} 
-                className='w-full flex justify-between'
+                className='w-full flex xl:flex-row flex-col justify-between'
               >
                 <input 
                   type="text"  
-                  className='w-[46%] h-[2.8rem] border-none bg-[#EAE6E6] placeholder:text-black placeholder:text-[.9rem] outline-none px-6 text-[.9rem] rounded-full text-black' 
+                  className='xl:w-[46%] xl:mb-0 mb-8 w-full h-[2.8rem] border-none bg-[#EAE6E6] placeholder:text-black placeholder:text-[.9rem] outline-none px-6 text-[.9rem] rounded-full text-black' 
                   placeholder={errors.name ? errors.name.message : "Name"}
                   {...register("name", { required: 'Please enter your name'  })}
                 />
                 <input 
                   type="text"  
-                  className='w-[46%] h-[2.8rem] border-none bg-[#EAE6E6] placeholder:text-black placeholder:text-[.9rem] outline-none px-6 text-[.9rem] rounded-full text-black' 
+                  className='xl:w-[46%] w-full h-[2.8rem] border-none bg-[#EAE6E6] placeholder:text-black placeholder:text-[.9rem] outline-none px-6 text-[.9rem] rounded-full text-black' 
                   placeholder={errors.email ? errors.email.message : "Email"}
                   {...register("email", { required: 'Please enter your email'  })}
                 />
