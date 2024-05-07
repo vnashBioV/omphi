@@ -76,8 +76,8 @@ const PostPage = () => {
     }, [path]);
 
   return (
-    <div className='container px-[10rem] mx-auto'>
-        <div className='flex w-full mb-14'>
+    <div className='container xl:px-[10rem] px-6 mx-auto'>
+        <div className='flex w-full xl:mb-14 my-4'>
           <div 
             className='flex items-center cursor-pointer justify-center group'
             onClick={() => router.push('/')}
@@ -85,8 +85,8 @@ const PostPage = () => {
             <MdOutlineArrowBackIosNew className='text-[#535353] font-bold text-[2rem] group-hover:text-[2.3rem] transition-all duration-300'/> <p className='text-[#535353] group-hover:tracking-widest transition-all duration-300 text-[.8rem]'>Back</p>
           </div>
         </div>  
-        <div className='w-full flex justify-between'>
-          <div className='w-[50%] flex flex-col justify-center pr-[4rem] gap-10'>
+        <div className='w-full flex xl:flex-row flex-col-reverse'>
+          <div className='xl:w-[50%] w-full flex flex-col justify-center xl:pr-[4rem] gap-10'>
             <div className='flex flex-row'>
               <div className='w-[4rem] h-[4rem] rounded-full bg-[#bdbdbd]'>
                 {authorData &&
@@ -106,7 +106,7 @@ const PostPage = () => {
                 </p>
               </div>
             </div>
-            <h3 className={`text-black text-[2rem] font-[700] ${!postData && "bg-[#bdbdbd] w-[544px] h-[144px] rounded-xl"}`}>{postData?.title}</h3>
+            <h3 className={`text-black text-[2rem] font-[700] ${!postData && "bg-[#bdbdbd] xl:w-[544px] w-full xl:h-[144px] rounded-xl"}`}>{postData?.title}</h3>
 
             <div className={`w-full h-[700px] mx-h-[700px] blog-paragraph ${!postData && "bg-[#bdbdbd] w-[544px] h-[344px] mx-h-[344px] rounded-xl"} overflow-scroll scrollbar-hide`}>
               <p className='text-black font-[400]'>
@@ -114,14 +114,14 @@ const PostPage = () => {
               </p>
             </div>
           </div>
-          <div className={`h-[500px] w-[50%] ${!postData && "bg-[#bdbdbd] w-[544px] h-[344px] rounded-xl"} border`}>
+          <div className={`xl:h-[500px] xl:rounded-none rounded-xl mb-[3rem] xl:mb-0 xl:w-[50%] w-full ${!postData && "bg-[#bdbdbd] xl:w-[544px] w-full xl:h-[344px] rounded-xl"} border`}>
             { postData &&
               <Image 
                 src={postData ? urlFor(postData?.mainImage).url() : ""}
                 width={2880}
                 height={1800}
                 alt='Post Image'
-                className='w-full h-full object-cover'
+                className='w-full h-full xl:rounded-none rounded-xl object-cover'
               />
             }
           </div>
