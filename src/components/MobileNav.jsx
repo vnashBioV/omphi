@@ -20,10 +20,10 @@ const MobileNav = ({setIsActive}) => {
             path: 'posts',
             name: 'Posts',
         },
-        {
-            path: 'store',
-            name: 'Store',
-        },
+        // {
+        //     path: 'store',
+        //     name: 'Store',
+        // },
         {
             path: 'contact',
             name: 'Contact',

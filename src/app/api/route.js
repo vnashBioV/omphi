@@ -1,4 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import { NextResponse } from "next/server";
 
 import { mailOptions, transporter } from "../../config/nodemailer";
 
@@ -8,6 +9,8 @@ const CONTACT_MESSAGE_FIELDS = {
   subject: "Subject",
   message: "Message",
 };
+
+
 
 const generateEmailContent = (data) => {
   const stringData = Object.entries(data).reduce(
@@ -170,22 +173,22 @@ const generateEmailContent = (data) => {
   };
 };
 
-const handler = async(req, res) => {
-  if(req.method === "POST"){
-    const data = req.body;
-    console.log("The body", req.body)
+export async function POST(request) {
+  if(request.method === "POST"){
+    const data = await request.json();
+    console.log("The body see what is here", data)
     try {
       await transporter.sendMail({
         ...mailOptions,
         ...generateEmailContent(data),
         subject: data.subject,
       })
-      return res.status(200).json({ success: true })
+      return NextResponse.json({ message: "success" }, { status: 200 });
     } catch (error) {
       console.log(error)
-      return res.status(400).json({ message: error.message})
+      return NextResponse.json({ message: "success" }, { status: 400 });
     }
   }
-  return res.status(400).json({ message: 'bad request' })
+  return NextResponse.json({ message: "bad request" }, { status: 400 });
 }
-export default handler
+// export default handler
