@@ -50,7 +50,7 @@ const About = () => {
                   of comfort zone to create something truly amazing. 
                   Driven by a passion for learning and thrive on staying 
                   ahead of the curve when it comes to new technologies 
-                  and design trends. Let's innovate, create, and make 
+                  and design trends. Let's innovate, create, and make  
                   magic happen together!
                 </p>
                 <div className='flex gap-6'>
