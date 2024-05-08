@@ -60,7 +60,7 @@ const About = () => {
                   </div>
                   <div className='flex items-center'>
                     <BiLogoFigma  className='text-[2rem]'/>
-                    <p className='ml-[.7rem] text-[.9rem]'>Elegent Designs</p>
+                    <p className='ml-[.7rem] text-[.9rem]'>Elegant Designs</p>
                   </div>
                 </div>
                 
