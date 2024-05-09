@@ -85,11 +85,11 @@ const Post = ({posts}) => {
                     onSwiper={(swiper) => console.log(swiper)}
                     className='w-full cursor-grab'
                 >
-                    { posts && sortedPosts.map((post, i) => {
+                    { posts && sortedPosts.map((post) => {
                             return (
                                 <SwiperSlide>
                                     <div 
-                                        key={i}
+                                        key={post._id}
                                         className='w-full h-fit p-3'
                                         variants={fadeIn('up', 0.1)}
                                         initial='hidden'
@@ -118,8 +118,6 @@ const Post = ({posts}) => {
                     }
                 </Swiper>
             </motion.div>
-            
-            
         </div>
     )
 }
