@@ -13,6 +13,8 @@ import { IoTimer } from "react-icons/io5";
 import {motion} from 'framer-motion'
 import {fadeIn} from '../../variants'
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -42,6 +44,8 @@ const Post = ({posts}) => {
         "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
     ];  
 
+    const sortedPosts = posts ?  posts.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)) : posts;
+
     return (
         <div className='container flex xl:flex-row flex-col xl:px-0 px-6 justify-between items-center mx-auto xl:mb-[15rem] mb-[5rem]'>
             <div className='xl:w-[25%] w-full xl:pb-0 pb-6'>
@@ -67,35 +71,55 @@ const Post = ({posts}) => {
                     Trends from Our Platform.
                 </motion.p>
             </div>
-            { posts && posts.map((post, i) => {
-                    return (
-                        <motion.div 
-                            key={i}
-                            className='xl:w-[23%] w-full h-fit p-3'
-                            variants={fadeIn('up', 0.1)}
-                            initial='hidden'
-                            whileInView={'show'}
-                            viewport={{once: false, amount: 0.3}} 
-                        >
-                            <div className='border xl:w-[296] w-full  rounded-[20px] h-[322px]'>
-                                <Image src={urlFor(post.mainImage).url()} width={2432} height={3648} alt='' className='object-cover rounded-[20px] w-full h-full'/>
-                            </div>
-                            <div className='w-full py-3'>
-                                <p className='text-black font-[800] xl:h-[76px] text-[1rem]'>{post.title}</p>
-                                <p className='text-black pt-3 xl:h-[89px] text-[.8rem] blog-body'>
-                                    <PortableText value={post.body} components={ptComponents}/>
-                                </p>
-                                <div className='mt-6'>
-                                    <Link href={`/postDetail/${post.slug.current}`} className='text-[black] font-bold cursor-pointer w-fit rounded-full px-4 text-[.7rem] p-2 border-black border'>Read More</Link> 
-                                </div>
-                                <p className='text-black mt-6 text-[.8rem] flex items-center'>
-                                    <IoTimer className='text-[1.3rem] mr-[.8rem]'/> {new Date(post.publishedAt).getFullYear()} {months[new Date(post.publishedAt).getMonth()]} {new Date(post.publishedAt).getDate()}
-                                </p>
-                            </div>
-                        </motion.div>
-                    )
-                })
-            }
+            <motion.div 
+                variants={fadeIn('up', 0.1)}
+                initial='hidden'
+                whileInView={'show'}
+                viewport={{once: false, amount: 0.3}} 
+                className='xl:w-[70%] flex flex-row'
+            >
+                <Swiper 
+                    // spaceBetween={50}
+                    slidesPerView={3}
+                    onSlideChange={() => console.log('slide change')}
+                    onSwiper={(swiper) => console.log(swiper)}
+                    className='w-full cursor-grab'
+                >
+                    { posts && sortedPosts.map((post, i) => {
+                            return (
+                                <SwiperSlide>
+                                    <div 
+                                        key={i}
+                                        className='w-full h-fit p-3'
+                                        variants={fadeIn('up', 0.1)}
+                                        initial='hidden'
+                                        whileInView={'show'}
+                                        viewport={{once: false, amount: 0.3}} 
+                                    >
+                                        <div className='border xl:w-[296] w-full  rounded-[20px] h-[322px]'>
+                                            <Image src={urlFor(post.mainImage).url()} width={2432} height={3648} alt='' className='object-cover rounded-[20px] w-full h-full'/>
+                                        </div>
+                                        <div className='w-full py-3'>
+                                            <p className='text-black font-[800] xl:h-[76px] text-[1rem]'>{post.title}</p>
+                                            <p className='text-black pt-3 xl:h-[89px] text-[.8rem] blog-body'>
+                                                <PortableText value={post.body} components={ptComponents}/>
+                                            </p>
+                                            <div className='mt-6'>
+                                                <Link href={`/postDetail/${post.slug.current}`} className='text-[black] font-bold cursor-pointer w-fit rounded-full px-4 text-[.7rem] p-2 border-black border'>Read More</Link> 
+                                            </div>
+                                            <p className='text-black mt-6 text-[.8rem] flex items-center'>
+                                                <IoTimer className='text-[1.3rem] mr-[.8rem]'/> {new Date(post.publishedAt).getFullYear()} {months[new Date(post.publishedAt).getMonth()]} {new Date(post.publishedAt).getDate()}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </SwiperSlide>
+                            )
+                        })
+                    }
+                </Swiper>
+            </motion.div>
+            
+            
         </div>
     )
 }
