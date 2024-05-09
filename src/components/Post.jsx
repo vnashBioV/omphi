@@ -87,9 +87,10 @@ const Post = ({posts}) => {
                 >
                     { posts && sortedPosts.map((post) => {
                             return (
-                                <SwiperSlide>
+                                <SwiperSlide
+                                    key={post._id}
+                                >
                                     <div 
-                                        key={post._id}
                                         className='w-full h-fit p-3'
                                         variants={fadeIn('up', 0.1)}
                                         initial='hidden'
