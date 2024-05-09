@@ -8,6 +8,7 @@ import { urlFor } from "@/app/lib/sanity";
 import BlockContent from '@sanity/block-content-to-react'
 import { PortableText } from 'next-sanity'
 import { IoTimer } from "react-icons/io5";
+import { useMediaQuery } from 'react-responsive'
 
 //framer motion
 import {motion} from 'framer-motion'
@@ -45,6 +46,8 @@ const Post = ({posts}) => {
     ];  
 
     const sortedPosts = posts ?  posts.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)) : posts;
+    const isTabletOrMobile = useMediaQuery({ query: '(max-width: 768px)' })
+
 
     return (
         <div className='container flex xl:flex-row flex-col xl:px-0 px-6 justify-between items-center mx-auto xl:mb-[15rem] mb-[5rem]'>
@@ -76,11 +79,11 @@ const Post = ({posts}) => {
                 initial='hidden'
                 whileInView={'show'}
                 viewport={{once: false, amount: 0.3}} 
-                className='xl:w-[70%] flex flex-row'
+                className='xl:w-[70%] w-full flex flex-row'
             >
                 <Swiper 
                     // spaceBetween={50}
-                    slidesPerView={3}
+                    slidesPerView={!isTabletOrMobile ? 3 : 1}
                     onSlideChange={() => console.log('slide change')}
                     onSwiper={(swiper) => console.log(swiper)}
                     className='w-full cursor-grab'

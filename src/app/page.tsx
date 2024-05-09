@@ -8,7 +8,7 @@ import Contact from "@/components/Contact";
 import BackgroundArt from "@/components/BackgroundArt";
 
 export const metadata: Metadata = {
-  title: "Tshilitech",
+  title: "tshilitech",
   description: "Designing Websites, Apps, and Digital Solutions Tailored Just for You",
 };
 
