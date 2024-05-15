@@ -35,6 +35,9 @@ export default function RootLayout({
     <html lang="en">
       <Head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
+        <title>tshilitech</title>
+        <meta name="description" content="Websites, Apps, and Digital Solutions Tailored Just for You" />
+        <meta name="keywords" content="websites, web development, web design, applications, application development, seo, design, react, nextjs, javascript, html, css" />
       </Head>
       <body className={`${poppins.variable} overflow-x-hidden relative`}>
         {!hideHeaderFooter && <Header />}
