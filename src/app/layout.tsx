@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Poppins } from 'next/font/google'
 import { usePathname } from 'next/navigation'
+import Head from 'next/head';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,9 +33,9 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <head>
+      <Head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
-      </head>
+      </Head>
       <body className={`${poppins.variable} overflow-x-hidden relative`}>
         {!hideHeaderFooter && <Header />}
         {children}
