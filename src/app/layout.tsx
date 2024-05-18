@@ -17,8 +17,6 @@ const poppins = Poppins({
   variable: '--font-poppins',
 });
 
-
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -33,12 +31,11 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <Head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+      <head>
         <title>tshilitech</title>
         <meta name="description" content="Websites, Apps, and Digital Solutions Tailored Just for You" />
         <meta name="keywords" content="websites, web development, web design, applications, application development, seo, design, react, nextjs, javascript, html, css" />
-      </Head>
+      </head>
       <body className={`${poppins.variable} overflow-x-hidden relative`}>
         {!hideHeaderFooter && <Header />}
         {children}

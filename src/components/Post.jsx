@@ -48,7 +48,6 @@ const Post = ({posts}) => {
     const sortedPosts = posts ?  posts.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)) : posts;
     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 768px)' })
 
-
     return (
         <div className='container flex xl:flex-row flex-col xl:px-0 px-6 justify-between items-center mx-auto xl:mb-[15rem] mb-[5rem]'>
             <div className='xl:w-[25%] w-full xl:pb-0 pb-6'>
