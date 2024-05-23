@@ -10,6 +10,7 @@ const getData = async () => {
 
 const Posts = async () => {
     const posts = await getData()
+    console.log("🚀 ~ Posts ~ posts:", posts)
     return (
         <section className='w-full flex-col justify-center items-center flex' id="posts">
             <Post posts={posts}/>

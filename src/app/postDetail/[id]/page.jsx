@@ -3,10 +3,11 @@ import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { client } from "../../lib/sanity";
-import { PortableText } from 'next-sanity'
+import { PortableText } from '@portabletext/react';
 import { urlFor } from "@/app/lib/sanity";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import { useRouter } from 'next/navigation'
+import ptComponents from '@/components/ptComponents';
 
 const getPostBySlug = async (slug) => {
   const query = `*[_type == 'post' && slug.current == $slug][0]`;
@@ -22,28 +23,27 @@ const getAuthorBySlug = async (slug) => {
   return author;
 }
 
-const ptComponents = {
-  types: {
-    image: ({ value }) => {
-      if (!value?.asset?._ref) {
-        return null
-      }
-      return (
-        <img
-          alt={value.alt || ' '}
-          loading="lazy"
-          src={urlFor(value).width(320).height(240).fit('max').auto('format')}
-        />
-      )
-    }
-  }
-}
+// const ptComponents = {
+//   types: {
+//     image: ({ value }) => {
+//       if (!value?.asset?._ref) {
+//         return null
+//       }
+//       return (
+//         <img
+//           alt={value.alt || ' '}
+//           loading="lazy"
+//           src={urlFor(value).width(320).height(240).fit('max').auto('format')}
+//         />
+//       )
+//     }
+//   }
+// }
 
 const PostPage = () => {
     const [postData, setPostData] = useState(null)
+    console.log("🚀 ~ PostPage ~ postData:", postData)
     const [authorData, setAuthorData] = useState(null)
-    console.log("🚀 ~ PostPage ~ authorData:", authorData)
-    console.log("🚀 ~ PostPage ~ postData:", postData?.mainImage)
 
     const router = useRouter()
 

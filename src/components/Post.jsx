@@ -1,14 +1,11 @@
 'use client'
-import React, {useState, useEffect} from 'react'
 import Image from 'next/image'
-import { IoArrowForwardSharp } from "react-icons/io5";
 import Link from 'next/link';
-import { FaArrowRight } from "react-icons/fa";
 import { urlFor } from "@/app/lib/sanity";
-import BlockContent from '@sanity/block-content-to-react'
-import { PortableText } from 'next-sanity'
+import { PortableText } from '@portabletext/react';
 import { IoTimer } from "react-icons/io5";
 import { useMediaQuery } from 'react-responsive'
+import ptComponents from './ptComponents'
 
 //framer motion
 import {motion} from 'framer-motion'
@@ -21,23 +18,6 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-
-const ptComponents = {
-    types: {
-      image: ({ value }) => {
-        if (!value?.asset?._ref) {
-          return null
-        }
-        return (
-          <img
-            alt={value.alt || ' '}
-            loading="lazy"
-            src={urlFor(value).width(320).height(240).fit('max').auto('format')}
-          />
-        )
-      }
-    }
-}
 
 const Post = ({posts}) => {    
     const months = [
@@ -105,7 +85,7 @@ const Post = ({posts}) => {
                                         <div className='w-full py-3'>
                                             <p className='text-black font-[800] xl:h-[76px] text-[1rem]'>{post.title}</p>
                                             <p className='text-black pt-3 xl:h-[89px] text-[.8rem] blog-body'>
-                                                <PortableText value={post.body} components={ptComponents}/>
+                                                <PortableText value={post.body} components={ptComponents} />
                                             </p>
                                             <div className='mt-6'>
                                                 <Link href={`/postDetail/${post.slug.current}`} className='text-[black] font-bold cursor-pointer w-fit rounded-full px-4 text-[.7rem] p-2 border-black border'>Read More</Link> 
