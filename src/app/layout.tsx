@@ -1,11 +1,8 @@
 'use client'
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { Poppins } from 'next/font/google'
 import { usePathname } from 'next/navigation'
 import Head from 'next/head';
-
-const inter = Inter({ subsets: ["latin"] });
 
 //import components
 import Header from '../components/Header';
@@ -25,7 +22,7 @@ export default function RootLayout({
   
   const pathname = usePathname()
 
-  const noHeaderFooterRoutes = ['/store', 'postDetail', '/privacy'];
+  const noHeaderFooterRoutes = ['/store', 'postDetail', '/privacy', '/prices'];
   
   const hideHeaderFooter = noHeaderFooterRoutes.some(route => pathname.includes(route));
 

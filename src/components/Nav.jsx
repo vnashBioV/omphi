@@ -54,12 +54,12 @@ const Nav = ({containerStyles, linkStyles}) => {
           )
         })}
 
-        {/* <NextLink 
-            href={"/store"}
+        <NextLink 
+            href={"/prices"}
             className={`cursor-pointer ml-[2rem] font-[400] text-black hover:tracking-wide text-[.9rem] hover:border-b-[1px] hover:border-black transition-all duration-300`}
         >
-            Store
-        </NextLink> */}
+            Prices
+        </NextLink>
 
         <div className='ml-[2.5rem] w-[130px] h-[53px] rounded-full flex justify-center items-center overflow-hidden bg-transparent'>
             <Link

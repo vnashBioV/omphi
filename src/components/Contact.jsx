@@ -39,7 +39,6 @@ const Contact = () => {
       setError(true)
       setErrorMessage(error.message)
     }
-    
   };
 
   return (
