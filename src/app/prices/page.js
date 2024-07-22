@@ -48,7 +48,6 @@ const page = () => {
                 <p>Web Maintenance (1 hour)</p>
                 <p>On Site Optimization</p>
                 <p>Performance & Speed</p>
-                <p>Customized BackEnd</p>
                 <p>Hosting & Backup</p>
                 <p>Monthly Report</p>
             </div>
@@ -67,7 +66,7 @@ const page = () => {
                 <p>Web Maintenance (1 hour)</p>
                 <p>On Site Optimization</p>
                 <p>Performance & Speed</p>
-                <p>Basic contact form</p>
+                <p>Customized BackEnd</p>
                 <p>Hosting & Backup</p>
                 <p>Google MyBusiness Optimisation</p>
                 <p>Competitor Analysis</p>
