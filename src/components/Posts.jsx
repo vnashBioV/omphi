@@ -5,6 +5,7 @@ import { client } from "../app/lib/sanity";
 const getData = async () => {
     const query = `*[_type == 'post']`
     const data = await client.fetch(query);
+    console.log("Fetched posts:", data); // Add this line
     return data;
 }
 

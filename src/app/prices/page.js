@@ -3,7 +3,7 @@ import React from 'react'
 const page = () => {
   return (
     <div 
-        className='flex justify-between text-black h-[100%] flex-col w-[1200px] mx-auto my-[3rem] items-center'
+        className='flex justify-between text-black h-[100%] md:px-0 px-[6rem] flex-col md:w-[1200px] w-full mx-auto my-[3rem] items-center'
     >
         <div className='flex flex-col items-center gap-6 justify-center mb-12'>
             <h3 
@@ -14,9 +14,9 @@ const page = () => {
             <h3 className='font-bold text-[1rem] '>Website and SEO</h3>
         </div>
 
-        <div className='flex w-full justify-between items-center flex-row'>
+        <div className='flex w-full justify-between items-center md:flex-row flex-col'>
             <div 
-                className='w-[30%] h-[500px] flex p-6 shadow-lg flex-col justify-between items-center border rounded-xl'
+                className='md:w-[30%] md:mb-0 mb-6 w-full h-[500px] flex p-6 shadow-lg flex-col justify-between items-center border rounded-xl'
             >
                 <h3 className='text-black text-[1.2rem]'>
                     Basic
@@ -34,7 +34,7 @@ const page = () => {
                 <p>Hosting & Backup</p>
             </div>
             <div 
-                className='w-[30%] h-[500px] flex p-6 shadow-lg flex-col justify-between items-center border rounded-xl'
+                className='md:w-[30%] md:mb-0 mb-6 w-full h-[500px] flex p-6 shadow-lg flex-col justify-between items-center border rounded-xl'
             >
                 <h3 className='text-black text-[1.2rem]'>
                     Intermediate
@@ -52,7 +52,7 @@ const page = () => {
                 <p>Monthly Report</p>
             </div>
             <div 
-                className='w-[30%] h-[600px] flex p-6 shadow-lg flex-col justify-between items-center border rounded-xl'
+                className='md:w-[30%] w-full h-[600px] flex p-6 shadow-lg flex-col justify-between text-center items-center border rounded-xl'
             >
                 <h3 className='text-black text-[1.2rem]'>
                     Advanced
@@ -79,9 +79,9 @@ const page = () => {
         <div className='flex flex-col items-center gap-6 justify-center my-12'>
             <h3 className='font-bold text-[1rem] '>Social Media Packages</h3>
         </div>
-        <div className='flex w-full items-center flex-row'>
+        <div className='flex w-full items-center md:flex-row flex-col'>
             <div 
-                className='w-[30%] h-[500px] mr-16 flex p-6 shadow-lg flex-col gap-4 items-center border rounded-xl'
+                className='md:w-[30%] text-center w-full h-[500px] md:mr-16 md:mb-0 mb-6 flex p-6 shadow-lg flex-col gap-4 items-center border rounded-xl'
             >
                 <h3 className='text-black text-[1.2rem]'>
                     Basic
@@ -96,7 +96,7 @@ const page = () => {
                         <p>Social media platform</p>
                     </div>  
                     <div 
-                        className='w-[80%] p-4 flex flex-col justify-center items-center border-[grey] border-[1px]'
+                        className='w-[80%] p-4 flex flex-col justify-center text-center items-center border-[grey] border-[1px]'
                     >
                         <p>Facebook</p>
                         <p>Instagram</p>
@@ -107,7 +107,7 @@ const page = () => {
                               
             </div>
             <div 
-                className='w-[30%] h-[500px] mr-16 flex p-6 shadow-lg flex-col gap-4 items-center border rounded-xl'
+                className='md:w-[30%] w-full text-center h-[500px] md:mr-16 md:mb-0 mb-6 flex p-6 shadow-lg flex-col gap-4 items-center border rounded-xl'
             >
                 <h3 className='text-black text-[1.2rem]'>
                     Intermediate
@@ -140,7 +140,7 @@ const page = () => {
         <div className='flex flex-col items-center gap-6 justify-center my-12'>
             <h3 className='font-bold text-[1rem]'>App Development</h3>
         </div>
-        <p className='mb-16'>Let's get touch and disscuss the budget</p>
+        <p className='mb-16 text-center'>Let's get touch and disscuss the budget</p>
 
     </div>
   )
