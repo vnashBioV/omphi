@@ -3,7 +3,7 @@ import React from 'react'
 const page = () => {
   return (
     <div 
-        className='flex justify-between text-black h-[100%] md:px-0 px-[6rem] flex-col md:w-[1200px] w-full mx-auto my-[3rem] items-center'
+        className='flex justify-between text-black h-[100%] md:px-0 px-[1rem] flex-col md:w-[1200px] w-full mx-auto my-[3rem] items-center'
     >
         <div className='flex flex-col items-center gap-6 justify-center mb-12'>
             <h3 
@@ -140,7 +140,7 @@ const page = () => {
         <div className='flex flex-col items-center gap-6 justify-center my-12'>
             <h3 className='font-bold text-[1rem]'>App Development</h3>
         </div>
-        <p className='mb-16 text-center'>Let's get touch and disscuss the budget</p>
+        <p className='mb-16 text-center'>Let's get in touch and disscuss the budget</p>
 
     </div>
   )
