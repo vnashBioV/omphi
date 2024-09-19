@@ -13,9 +13,7 @@ const config: Config = {
       },
     },
     backgroundImage:{
-      hero_overlay: "url('/hero-overlay.png')",
-      opening_hours: "url('/assets/opening-hours/bg.png')",
-      footer: "url('/assets/footer/bg.png')"
+      store_overlay: "url('/store-background.jpg')",
     },
   },
   plugins: [
