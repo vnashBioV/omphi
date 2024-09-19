@@ -31,42 +31,34 @@ export async function POST(req) {
         const m_payment_id = formData.get('m_payment_id');
         const token = formData.get('custom_str1');  // token passed in IPN
         
-        console.log('Payment Status:', payment_status); // Debugging log
-        console.log('m_payment_id:', m_payment_id); // Debugging log
-        console.log('token:', token); // Debugging log
-
         // Verify the IPN with PayFast
         const isValidIPN = await verifyPayFastIPN(body);
         
         if (!isValidIPN) {
-            console.error('Invalid IPN verification');
             return NextResponse.json({ success: false, message: 'Unable to verify payment' });
         }
 
         // Only handle payment complete status
         if (payment_status === 'COMPLETE') {
-            // Fetch the transaction from the database
             const transaction = await getTransactionByPaymentId(m_payment_id);
 
             if (!transaction) {
-                console.error('Transaction not found for m_payment_id:', m_payment_id);
                 return NextResponse.json({ success: false, message: 'Transaction not found' });
             }
 
-            // Update the payment status in the database
-            console.log('Updating transaction status for token:', transaction.token);
+            // Update the payment status
             await updateTransactionStatus(transaction.token, 'Complete');
 
-            // Save the source code URL or other required updates
-            await saveSourceCodeUrl(transaction.token, transaction.sourceCodeUrl);  // Ensure this is part of your logic
-            
-            return NextResponse.json({ success: true });
+            // Return the source code URL after successful payment
+            return NextResponse.json({
+                success: true,
+                sourceCodeUrl: transaction.sourceCodeUrl, // This is the URL stored in the database
+            });
         }
 
-        console.warn('Payment status is not complete:', payment_status);
         return NextResponse.json({ success: false, message: 'Payment not complete' });
     } catch (error) {
-        console.error('Error processing IPN:', error);
         return NextResponse.json({ success: false, message: 'Internal server error' });
     }
 }
+

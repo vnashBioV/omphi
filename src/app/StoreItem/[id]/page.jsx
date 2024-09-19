@@ -10,7 +10,14 @@ import { FaFacebookF } from "react-icons/fa";
 import Link from 'next/link';
 
 const getStoreItemBySlug = async (slug) => {
-    const query = `*[_type == 'store' && slug.current == $slug][0]`;
+    const query = `*[_type == 'store' && slug.current == $slug][0]{
+        title,
+        description,
+        price,
+        slug,
+        images,
+        date
+    }`;
     const params = { slug };
     const post = await client.fetch(query, params);
     return post;

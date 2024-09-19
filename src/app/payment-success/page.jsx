@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
+import { FaCheckCircle } from "react-icons/fa";
 
 export default function PaymentSuccessPage() {
     const [downloadUrl, setDownloadUrl] = useState(null);
@@ -11,12 +12,11 @@ export default function PaymentSuccessPage() {
 
         const fetchDownloadUrl = async () => {
             try {
-                // Update the endpoint to your transaction status API
                 const response = await fetch(`/api/verify-token?m_payment_id=${m_payment_id}`);
                 const data = await response.json();
 
-                if (data.status === 'valid') {
-                    setDownloadUrl(data.sourceCodeUrl);
+                if (data.success) {
+                    setDownloadUrl(data.sourceCodeUrl); // Set the source code download URL
                 } else {
                     setErrorMessage(data.message);
                 }
@@ -28,7 +28,7 @@ export default function PaymentSuccessPage() {
         if (m_payment_id) {
             fetchDownloadUrl();
         } else {
-            setErrorMessage('Invalid m_payment_id');
+            setErrorMessage('Invalid payment ID');
         }
     }, []);
 
@@ -37,13 +37,17 @@ export default function PaymentSuccessPage() {
     }
 
     return (
-        <div>
+        <div className='text-black h-screen flex gap-6 justify-center items-center flex-col'>
+            <div className='w-full flex justify-center items-center'>
+                <h1 className='font-semibold text-[1.5rem]'>Payment Successful!</h1>
+                <p className='ml-4 text-[1.7rem]'><FaCheckCircle/></p>
+            </div>
+            
+            <p>Your payment was successful. You can download your source code from the link below:</p>
             {downloadUrl ? (
-                <div>
-                    <h1>Payment Successful!</h1>
-                    <p>Your payment was successful. You can download your source code from the link below:</p>
-                    <a href={downloadUrl} download>Download Source Code</a>
-                </div>
+                <a href={downloadUrl} download className='text-blue-500 underline'>
+                    Download Source Code
+                </a>
             ) : (
                 <p>Verifying your payment...</p>
             )}

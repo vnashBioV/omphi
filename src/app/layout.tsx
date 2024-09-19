@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   
   const pathname = usePathname()
-  const noHeaderFooterRoutes = ['/store', 'postDetail', '/privacy', '/prices', '/StoreItem'];
+  const noHeaderFooterRoutes = ['/store', 'postDetail', '/privacy', '/prices', '/StoreItem', '/payment-success'];
   const hideHeaderFooter = noHeaderFooterRoutes.some(route => pathname.includes(route));
 
   const [mounted, setMounted] = useState(false);
