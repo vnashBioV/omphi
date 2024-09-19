@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { FaCheckCircle } from "react-icons/fa";
-import { urlFor } from '../lib/sanity';
+import { urlFor, urlForFile } from '../lib/sanity';
 
 export default function PaymentSuccessPage() {
     const [downloadUrl, setDownloadUrl] = useState(null);
@@ -48,7 +48,7 @@ export default function PaymentSuccessPage() {
             
             <p>Your payment was successful. You can download your source code from the link below:</p>
             {downloadUrl ? (
-                <a href={urlFor(downloadUrl.asset).url()} download className='text-blue-500 underline'>
+                <a href={urlForFile(downloadUrl.asset).url()} download className='text-blue-500 underline'>
                     Download Source Code
                 </a>
             ) : (
