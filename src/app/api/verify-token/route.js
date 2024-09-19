@@ -33,7 +33,7 @@ export async function GET(req) {
         }
 
         // Return the download URL for the source code
-        const sourceCodeUrl = store.sourceCodeFile; // Access the URL from the file field
+        const sourceCodeUrl = store.sourceCodeFile.asset.url; // Access the URL from the file field
         return NextResponse.json({ success: true, sourceCodeUrl });
     } catch (error) {
         console.error('Error processing payment verification:', error);
