@@ -9,12 +9,12 @@ export default function PaymentSuccessPage() {
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
         const m_payment_id = urlParams.get('m_payment_id');
-
+    
         const fetchDownloadUrl = async () => {
             try {
                 const response = await fetch(`/api/verify-token?m_payment_id=${m_payment_id}`);
                 const data = await response.json();
-
+    
                 if (data.success) {
                     setDownloadUrl(data.sourceCodeUrl); // Set the source code download URL
                 } else {
@@ -24,7 +24,7 @@ export default function PaymentSuccessPage() {
                 setErrorMessage('Error fetching payment status.');
             }
         };
-
+    
         if (m_payment_id) {
             fetchDownloadUrl();
         } else {
