@@ -27,6 +27,7 @@ export async function GET(req) {
 
         // Fetch the store document using item_name or another unique field from the transaction
         const store = await getStoreByItemName(transaction.item_name); // Use item_name to find store
+        console.log("🚀 ~ GET ~ transaction.item_name:", transaction.item_name)
 
         if (!store || !store.sourceCodeFile) {
             return NextResponse.json({ success: false, message: 'Source code not found in store' });
