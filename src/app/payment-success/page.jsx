@@ -48,7 +48,7 @@ export default function PaymentSuccessPage() {
             
             <p>Your payment was successful. You can download your source code from the link below:</p>
             {downloadUrl ? (
-                <a href={urlForFile(downloadUrl.asset).url()} download className='text-blue-500 underline'>
+                <a href={downloadUrl.sourceCodeFile.asset.url} download className='text-blue-500 underline'>
                     Download Source Code
                 </a>
             ) : (
