@@ -40,6 +40,19 @@ export async function getTransactionByPaymentId(paymentId) {
     }
 }
 
+export async function getSourceCodeFromStore(storeId) {
+    try {
+        const query = `*[_type == "store" && _id == $storeId][0]`;
+        const params = { storeId };
+        const result = await client.fetch(query, params);
+        return result ? result.sourceCodeUrl : null;
+    } catch (error) {
+        console.error('Error retrieving source code from store:', error);
+        throw new Error('Sanity error');
+    }
+}
+
+
 // Update the payment status of a transaction
 export const updateTransactionStatus = async (token, newStatus) => {
     try {

@@ -1,32 +1,38 @@
-import { getTransactionByPaymentId } from '../../lib/db'; // Update import to match your structure
+import { getTransactionByPaymentId, getSourceCodeFromStore } from '../../lib/db';
 import { NextResponse } from 'next/server';
 
 export async function GET(req) {
     try {
-        // Extract m_payment_id from query parameters
         const { searchParams } = new URL(req.url);
         const m_payment_id = searchParams.get('m_payment_id');
 
         if (!m_payment_id) {
-            return NextResponse.json({ status: 'invalid', message: 'm_payment_id is required' }, { status: 400 });
+            return NextResponse.json({ success: false, message: 'm_payment_id is required' });
         }
 
-        // Fetch transaction from the database using the m_payment_id
+        // Fetch the transaction details
         const transaction = await getTransactionByPaymentId(m_payment_id);
 
         if (!transaction) {
-            return NextResponse.json({ status: 'invalid', message: 'Invalid m_payment_id' });
+            return NextResponse.json({ success: false, message: 'Transaction not found' });
         }
 
         // Check if payment is complete
         if (transaction.paymentStatus !== 'Complete') {
-            return NextResponse.json({ status: 'invalid', message: 'Payment not complete' });
+            return NextResponse.json({ success: false, message: 'Payment not complete' });
+        }
+
+        // Fetch the source code URL from the store document using a reference (like storeId from the transaction)
+        const sourceCodeUrl = await getSourceCodeFromStore(transaction.storeId); // Assuming the transaction has a storeId reference
+
+        if (!sourceCodeUrl) {
+            return NextResponse.json({ success: false, message: 'Source code not found' });
         }
 
         // Return the source code URL
-        return NextResponse.json({ status: 'valid', sourceCodeUrl: transaction.sourceCodeUrl });
+        return NextResponse.json({ success: true, sourceCodeUrl });
     } catch (error) {
-        console.error('Error fetching transaction:', error);
-        return NextResponse.json({ status: 'error', message: 'Internal server error' }, { status: 500 });
+        console.error('Error processing payment verification:', error);
+        return NextResponse.json({ success: false, message: 'Internal server error' });
     }
 }
