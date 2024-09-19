@@ -15,5 +15,11 @@ export const urlFor = (source) =>{
     return imgBuilder.image(source);
 }
 export function urlForFile(source) {
-    return imgBuilder.file(source);
-  }
+    const ref = source?._ref;
+    if (!ref) return '';
+
+    const [fileType, fileId, extension] = ref.split('-');
+    
+    // Construct the URL manually for files
+    return `https://cdn.sanity.io/files/vqxv3di5/production/${fileId}.${extension}`;
+}
