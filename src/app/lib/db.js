@@ -32,13 +32,15 @@ export async function getTransactionByPaymentId(paymentId) {
     try {
         const query = `*[_type == "transaction" && m_payment_id == $paymentId][0]`;
         const params = { paymentId };
-        const result = await client.fetch(query, params);
+        // Set 'cache' to 'no-store' to disable caching and force fresh data fetch
+        const result = await client.fetch(query, params, { cache: 'no-store' });
         return result;
     } catch (error) {
         console.error('Error retrieving transaction by payment ID:', error);
         throw new Error('Sanity error');
     }
 }
+
 
 export async function getSourceCodeFromStore(storeId) {
     try {
@@ -56,7 +58,7 @@ export async function getStoreByItemName(itemName) {
     try {
         const query = `*[_type == "store" && title == $itemName][0]`; // Assuming 'title' is equivalent to item_name
         const params = { itemName };
-        const result = await client.fetch(query, params);
+        const result = await client.fetch(query, params, { cache: 'no-store' });
         return result;
     } catch (error) {
         console.error('Error retrieving store by item name:', error);

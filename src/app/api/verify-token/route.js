@@ -17,9 +17,12 @@ export async function GET(req) {
             return NextResponse.json({ success: false, message: 'Transaction not found' });
         }
 
+        // Log the transaction payment status for debugging
+        console.log('Payment status:', transaction.paymentStatus);
+
         // Check if payment is complete
         if (transaction.paymentStatus !== 'Complete') {
-            return NextResponse.json({ success: false, message: 'Payment not complete' });
+            return NextResponse.json({ success: false, message: 'Payment not complete', status: transaction.paymentStatus });
         }
 
         // Fetch the store document using item_name or another unique field from the transaction
