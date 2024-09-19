@@ -17,9 +17,11 @@ export default function PaymentSuccessPage() {
     
                 if (data.success) {
                     setDownloadUrl(data.sourceCodeUrl); // Set the source code download URL
+                    console.log("🚀 ~ fetchDownloadUrl ~ data.sourceCodeUrl:", data.sourceCodeUrl)
                 } else {
                     setErrorMessage(data.message);
                 }
+                    
             } catch (error) {
                 setErrorMessage('Error fetching payment status.');
             }
