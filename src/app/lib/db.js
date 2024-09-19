@@ -44,14 +44,14 @@ export async function getTransactionByPaymentId(paymentId) {
 export const updateTransactionStatus = async (token, newStatus) => {
     try {
         // Fetch the transaction document by token
-        const transaction = await sanityClient.fetch('*[_type == "transaction" && token == $token][0]', { token });
+        const transaction = await client.fetch('*[_type == "transaction" && token == $token][0]', { token });
 
         if (!transaction) {
             throw new Error('Transaction not found');
         }
 
         // Update the payment status using the document's _id
-        const result = await sanityClient
+        const result = await client
             .patch(transaction._id)  // Use the document's _id, not a GROQ query
             .set({ paymentStatus: newStatus })  // Update the status
             .commit();
