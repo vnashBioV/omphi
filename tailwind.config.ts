@@ -8,13 +8,19 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      
+      fontFamily: {
+        poppins:[`var(--font-poppins)`, 'sans-serif'],
       },
     },
+    backgroundImage:{
+      hero_overlay: "url('/hero-overlay.png')",
+      opening_hours: "url('/assets/opening-hours/bg.png')",
+      footer: "url('/assets/footer/bg.png')"
+    },
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar-hide'),
+  ],
 };
 export default config;
