@@ -77,17 +77,17 @@ const StoreItem = () => {
     }
 
     return (
-        <div className='text-black flex justify-center items-center bg-[#e0e3f3] h-[100vh]'>
-            <div className='w-[50%] bg-[white] mx-auto flex flex-col rounded-xl p-6'>
+        <div className='text-black flex justify-center items-center bg-[#e0e3f3] xl:h-[100vh]'>
+            <div className='xl:w-[50%] w-full bg-[white] mx-auto flex flex-col rounded-xl p-6'>
                 <div className='flex items-center'>
-                    <p className="mr-3 text-[1rem] text-[gray]">Tshilitech</p>
+                    <p className="mr-3 xl:text-[1rem] text-[.7rem] text-[gray]">Tshilitech</p>
                     <p className="mr-3 text-[gray]"><MdChevronRight /></p>
-                    <p className="mr-3 text-[1rem] text-[gray]">Store</p>
+                    <p className="mr-3 xl:text-[1rem] text-[.7rem] text-[gray]">Store</p>
                     <p className="mr-3 text-[gray]"><MdChevronRight /></p>
-                    <p className="mr-3 text-[1rem] text-[gray]">{data.title}</p>
+                    <p className="mr-3 xl:text-[1rem] text-[.7rem] text-[gray]">{data.title}</p>
                 </div>
                 <div className="w-full h-[50%] bg-[#dfe3ff] mt-4 rounded-xl">
-                    <div className="w-[70%] mx-auto h-full flex flex-col justify-center items-center">
+                    <div className="xl:w-[70%] w-full xl:rounded-none rounded-xl mx-auto h-full flex flex-col justify-center items-center">
                         <Image
                             src={urlFor(data.images[1]).url()}
                             alt=""
@@ -95,7 +95,7 @@ const StoreItem = () => {
                             height={1080}
                             priority
                             quality={100}
-                            className="w-full h-full object-contain"
+                            className="w-full h-full object-contain xl:rounded-none rounded-xl"
                         />
                     </div>
                 </div>
@@ -105,7 +105,7 @@ const StoreItem = () => {
                         <p className=" font-extralight text-[1rem]">{data.description}</p>
                         <p className="font-semibold text-xl">R{data.price}</p>
                         <button
-                            className='w-[25%] h-14 text-white text-[1rem] rounded-full bg-[#455CE9] hover:bg-[#455CE9]/50 transition-all duration-300'
+                            className='xl:w-[25%] w-[50%] h-14 text-white text-[1rem] rounded-full bg-[#455CE9] hover:bg-[#455CE9]/50 transition-all duration-300'
                             onClick={handlePayment}
                         >
                             Get the code
