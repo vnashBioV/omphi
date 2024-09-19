@@ -56,26 +56,15 @@ export async function getSourceCodeFromStore(storeId) {
 
 export async function getStoreByItemName(itemName) {
     try {
-        const query = `*[_type == "store" && title == $title][0] {
-            sourceCodeFile {
-                asset->url
-            }
-        }`;
-        const params = { title: itemName };  // Correct key matching the query variable
-        const result = await client.fetch(query, params);
-        
-        if (!result) {
-            throw new Error('No store found with the provided item name.');
-        }
-
+        const query = `*[_type == "store" && title == $itemName][0]`; // Assuming 'title' is equivalent to item_name
+        const params = { itemName };
+        const result = await client.fetch(query, params, { cache: 'no-store' });
         return result;
     } catch (error) {
-        console.error('Error retrieving store by item name:', error.message);
-        throw new Error(`Sanity error: ${error.message}`);
+        console.error('Error retrieving store by item name:', error);
+        throw new Error('Sanity error');
     }
 }
-
-
 
 
 
