@@ -1,11 +1,11 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { FaCheckCircle } from "react-icons/fa";
-import { urlFor, urlForFile } from '../lib/sanity';
 
 export default function PaymentSuccessPage() {
     const [downloadUrl, setDownloadUrl] = useState(null);
     const [errorMessage, setErrorMessage] = useState('');
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -18,13 +18,15 @@ export default function PaymentSuccessPage() {
     
                 if (data.success) {
                     setDownloadUrl(data.sourceCodeUrl); // Set the source code download URL
-                    console.log("🚀 ~ fetchDownloadUrl ~ data.sourceCodeUrl:", data.sourceCodeUrl)
+                    setLoading(false);
                 } else {
                     setErrorMessage(data.message);
+                    setLoading(false);
                 }
                     
             } catch (error) {
                 setErrorMessage('Error fetching payment status.');
+                setLoading(false);
             }
         };
     
@@ -32,11 +34,12 @@ export default function PaymentSuccessPage() {
             fetchDownloadUrl();
         } else {
             setErrorMessage('Invalid payment ID');
+            setLoading(false);
         }
     }, []);
 
     if (errorMessage) {
-        return <p>{errorMessage}</p>;
+        return <p className="text-red-500">{errorMessage}</p>;
     }
 
     return (
@@ -46,13 +49,19 @@ export default function PaymentSuccessPage() {
                 <p className='ml-4 text-[1.7rem]'><FaCheckCircle/></p>
             </div>
             
-            <p>Your payment was successful. You can download your source code from the link below:</p>
-            {downloadUrl ? (
-                <a href={`${downloadUrl}?dl=`} download className='text-blue-500 underline'>
-                    Download Source Code
-                </a>
-            ) : (
+            {loading ? (
                 <p>Verifying your payment...</p>
+            ) : (
+                <>
+                    <p>Your payment was successful. You can download your source code from the link below:</p>
+                    {downloadUrl ? (
+                        <a href={`${downloadUrl}?dl=`} download className='text-blue-500 underline'>
+                            Download Source Code
+                        </a>
+                    ) : (
+                        <p>Unable to retrieve download link.</p>
+                    )}
+                </>
             )}
         </div>
     );
