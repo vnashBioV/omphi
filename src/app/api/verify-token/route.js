@@ -1,51 +1,70 @@
-import { getTransactionByPaymentId, getStoreByItemName } from '../../lib/db';
 import { NextResponse } from 'next/server';
+import { updateTransactionStatus, getTransactionByPaymentId, getStoreByItemName } from '../../lib/db';
 
-export async function GET(req) {
+const verifyPayFastIPN = async (body) => {
+    const payfastUrl = 'https://sandbox.payfast.co.za/eng/query/validate';
+
+    const response = await fetch(payfastUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: body,
+    });
+
+    const result = await response.text();
+    console.log('IPN Verification Result:', result); // Logging for debug purposes
+    return result === 'VALID';
+};
+
+export async function POST(req) {
     try {
-        const { searchParams } = new URL(req.url);
-        const m_payment_id = searchParams.get('m_payment_id');
+        const body = await req.text();
+        const formData = new URLSearchParams(body);
 
-        if (!m_payment_id) {
-            return NextResponse.json({ success: false, message: 'm_payment_id is required' });
+        const payment_status = formData.get('payment_status');
+        const m_payment_id = formData.get('m_payment_id');
+        const token = formData.get('custom_str1');
+
+        // Verify IPN with PayFast
+        const isValidIPN = await verifyPayFastIPN(body);
+
+        if (!isValidIPN) {
+            return NextResponse.json({ success: false, message: 'Invalid IPN' }, { status: 400 });
         }
 
-        // Fetch the transaction details
-        const transaction = await getTransactionByPaymentId(m_payment_id);
+        if (payment_status === 'COMPLETE') {
+            const transaction = await getTransactionByPaymentId(m_payment_id);
 
-        if (!transaction) {
-            return NextResponse.json({ success: false, message: 'Transaction not found' });
+            if (!transaction) {
+                return NextResponse.json({ success: false, message: 'Transaction not found' });
+            }
+
+            // Securely update the transaction status
+            await updateTransactionStatus(transaction.token, 'Complete');
+
+            // Check if the sourceCodeUrl is stored as a file reference
+            if (transaction.sourceCodeUrl.startsWith('file-')) {
+                // Manually build the file URL from the asset reference
+                const assetRef = transaction.sourceCodeUrl;
+                const projectId = process.env.SANITY_PROJECT_ID;
+                const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET;
+
+                // Sanity file references are typically in the format: file-<hash>-<extension>
+                const [, fileId, fileExtension] = assetRef.split('-');
+                const sourceCodeUrl = `https://cdn.sanity.io/files/${projectId}/${dataset}/${fileId}.${fileExtension}`;
+
+                // Return the dynamically constructed sourceCodeUrl
+                return NextResponse.json({ success: true, sourceCodeUrl });
+            }
+
+            // If the URL is already valid (not a file reference), return it directly
+            return NextResponse.json({ success: true, sourceCodeUrl: transaction.sourceCodeUrl });
         }
 
-        // Log the transaction payment status for debugging
-        console.log('Payment status:', transaction.paymentStatus);
-
-        // Check if payment is complete
-        if (transaction.paymentStatus !== 'Complete') {
-            return NextResponse.json({ success: false, message: 'Payment not complete', status: transaction.paymentStatus });
-        }
-
-        // Fetch the store document using item_name
-        const store = await getStoreByItemName(transaction.item_name);
-        console.log("🚀 ~ GET ~ transaction.item_name:", transaction.item_name);
-
-        if (!store || !store.sourceCodeFile || !store.sourceCodeFile.asset || !store.sourceCodeFile.asset._ref) {
-            return NextResponse.json({ success: false, message: 'Source code not found in store' });
-        }
-
-        // Manually build the file URL
-        const assetRef = store.sourceCodeFile.asset._ref;
-        const projectId = process.env.SANITY_PRODUCT_ID;
-        const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET;
-
-        // Sanity file references are typically in the format: file-<hash>-<extension>
-        const [, fileId, fileExtension] = assetRef.split('-');
-        const sourceCodeUrl = `https://cdn.sanity.io/files/${projectId}/${dataset}/${fileId}.${fileExtension}`;
-
-        // Return the download URL for the source code
-        return NextResponse.json({ success: true, sourceCodeUrl });
+        return NextResponse.json({ success: false, message: 'Payment not complete' });
     } catch (error) {
-        console.error('Error processing payment verification:', error);
-        return NextResponse.json({ success: false, message: 'Internal server error' });
+        console.error('Error handling IPN:', error);
+        return NextResponse.json({ success: false, message: 'Server error' }, { status: 500 });
     }
 }
