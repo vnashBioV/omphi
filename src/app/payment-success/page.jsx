@@ -1,11 +1,11 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { FaCheckCircle } from "react-icons/fa";
+import { urlFor, urlForFile } from '../lib/sanity';
 
 export default function PaymentSuccessPage() {
     const [downloadUrl, setDownloadUrl] = useState(null);
     const [errorMessage, setErrorMessage] = useState('');
-    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -13,26 +13,18 @@ export default function PaymentSuccessPage() {
     
         const fetchDownloadUrl = async () => {
             try {
-                const response = await fetch('/api/verify-token', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ m_payment_id }), // Send m_payment_id in the body
-                });
-
+                const response = await fetch(`/api/verify-token?m_payment_id=${m_payment_id}`);
                 const data = await response.json();
     
                 if (data.success) {
                     setDownloadUrl(data.sourceCodeUrl); // Set the source code download URL
+                    console.log("🚀 ~ fetchDownloadUrl ~ data.sourceCodeUrl:", data.sourceCodeUrl)
                 } else {
                     setErrorMessage(data.message);
                 }
                     
             } catch (error) {
                 setErrorMessage('Error fetching payment status.');
-            } finally {
-                setLoading(false); // Ensure loading is false after the fetch
             }
         };
     
@@ -40,12 +32,11 @@ export default function PaymentSuccessPage() {
             fetchDownloadUrl();
         } else {
             setErrorMessage('Invalid payment ID');
-            setLoading(false);
         }
     }, []);
 
     if (errorMessage) {
-        return <p className="text-red-500">{errorMessage}</p>;
+        return <p>{errorMessage}</p>;
     }
 
     return (
@@ -55,19 +46,13 @@ export default function PaymentSuccessPage() {
                 <p className='ml-4 text-[1.7rem]'><FaCheckCircle/></p>
             </div>
             
-            {loading ? (
-                <p>Verifying your payment...</p>
+            <p>Your payment was successful. You can download your source code from the link below:</p>
+            {downloadUrl ? (
+                <a href={`${downloadUrl}?dl=`} download className='text-blue-500 underline'>
+                    Download Source Code
+                </a>
             ) : (
-                <>
-                    <p>Your payment was successful. You can download your source code from the link below:</p>
-                    {downloadUrl ? (
-                        <a href={`${downloadUrl}?dl=`} download className='text-blue-500 underline'>
-                            Download Source Code
-                        </a>
-                    ) : (
-                        <p>Unable to retrieve download link.</p>
-                    )}
-                </>
+                <p>Verifying your payment...</p>
             )}
         </div>
     );
