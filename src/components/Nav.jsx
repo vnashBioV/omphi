@@ -34,12 +34,12 @@ const Nav = ({containerStyles, linkStyles}) => {
           )
         })}
 
-        <NextLink 
+        {/* <NextLink 
             href={"/store"}
             className={`cursor-pointer ml-[2rem] font-[400] text-black hover:tracking-wide text-[.9rem] hover:border-b-[1px] hover:border-black transition-all duration-300`}
         >
             Store
-        </NextLink>
+        </NextLink> */}
         <NextLink 
             href={"/prices"}
             className={`cursor-pointer ml-[2rem] font-[400] text-black hover:tracking-wide text-[.9rem] hover:border-b-[1px] hover:border-black transition-all duration-300`}
