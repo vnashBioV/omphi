@@ -7,37 +7,37 @@ export default function PaymentSuccessPage() {
     const [downloadUrl, setDownloadUrl] = useState(null);
     const [errorMessage, setErrorMessage] = useState('');
 
-    // useEffect(() => {
-    //     const urlParams = new URLSearchParams(window.location.search);
-    //     const m_payment_id = urlParams.get('m_payment_id');
+    useEffect(() => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const m_payment_id = urlParams.get('m_payment_id');
     
-    //     const fetchDownloadUrl = async () => {
-    //         try {
-    //             const response = await fetch(`/api/verify-token?m_payment_id=${m_payment_id}`);
-    //             const data = await response.json();
+        const fetchDownloadUrl = async () => {
+            try {
+                const response = await fetch(`/api/verify-token?m_payment_id=${m_payment_id}`);
+                const data = await response.json();
     
-    //             if (data.success) {
-    //                 setDownloadUrl(data.sourceCodeUrl); // Set the source code download URL
-    //                 console.log("🚀 ~ fetchDownloadUrl ~ data.sourceCodeUrl:", data.sourceCodeUrl)
-    //             } else {
-    //                 setErrorMessage(data.message);
-    //             }
+                if (data.success) {
+                    setDownloadUrl(data.sourceCodeUrl); // Set the source code download URL
+                    console.log("🚀 ~ fetchDownloadUrl ~ data.sourceCodeUrl:", data.sourceCodeUrl)
+                } else {
+                    setErrorMessage(data.message);
+                }
                     
-    //         } catch (error) {
-    //             setErrorMessage('Error fetching payment status.');
-    //         }
-    //     };
+            } catch (error) {
+                setErrorMessage('Error fetching payment status.');
+            }
+        };
     
-    //     if (m_payment_id) {
-    //         fetchDownloadUrl();
-    //     } else {
-    //         setErrorMessage('Invalid payment ID');
-    //     }
-    // }, []);
+        if (m_payment_id) {
+            fetchDownloadUrl();
+        } else {
+            setErrorMessage('Invalid payment ID');
+        }
+    }, []);
 
-    // if (errorMessage) {
-    //     return <p>{errorMessage}</p>;
-    // }
+    if (errorMessage) {
+        return <p>{errorMessage}</p>;
+    }
 
     return (
         <div className='text-black h-screen flex gap-6 justify-center items-center flex-col'>
