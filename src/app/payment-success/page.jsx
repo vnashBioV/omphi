@@ -1,11 +1,12 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { FaCheckCircle } from "react-icons/fa";
-import { urlFor, urlForFile } from '../lib/sanity';
+import Loader from '@/components/Loader'; // Assuming you have a loader component
 
 export default function PaymentSuccessPage() {
     const [downloadUrl, setDownloadUrl] = useState(null);
     const [errorMessage, setErrorMessage] = useState('');
+    const [isLoading, setIsLoading] = useState(true); // Loader state
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -18,13 +19,14 @@ export default function PaymentSuccessPage() {
     
                 if (data.success) {
                     setDownloadUrl(data.sourceCodeUrl); // Set the source code download URL
-                    console.log("🚀 ~ fetchDownloadUrl ~ data.sourceCodeUrl:", data.sourceCodeUrl)
+                    setIsLoading(false); // Stop the loader
                 } else {
                     setErrorMessage(data.message);
+                    setIsLoading(false); // Stop the loader in case of error
                 }
-                    
             } catch (error) {
                 setErrorMessage('Error fetching payment status.');
+                setIsLoading(false); // Stop the loader
             }
         };
     
@@ -32,6 +34,7 @@ export default function PaymentSuccessPage() {
             fetchDownloadUrl();
         } else {
             setErrorMessage('Invalid payment ID');
+            setIsLoading(false); // Stop the loader
         }
     }, []);
 
@@ -47,13 +50,16 @@ export default function PaymentSuccessPage() {
             </div>
             
             <p>Your payment was successful. You can download your source code from the link below:</p>
-            {/* {downloadUrl ? ( */}
+
+            {isLoading ? (
+                <Loader />  // Show the loader while checking payment status
+            ) : downloadUrl ? (
                 <a href={`${downloadUrl}?dl=`} download className='xl:w-[15%] flex justify-center items-center w-[50%] h-14 text-white text-[1rem] rounded-full bg-[#455CE9] hover:bg-[#455CE9]/50 transition-all duration-300'>
                     Download Source Code
                 </a>
-            {/* ) : (
+            ) : (
                 <p>Verifying your payment...</p>
-            )} */}
+            )}
         </div>
     );
 }
