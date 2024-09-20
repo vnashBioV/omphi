@@ -26,7 +26,7 @@ export async function POST(req) {
         amount,
         item_name,
         custom_str1: token,  // Pass token to track payment later
-        payment_method: 'dc', // Credit card (cc) and EFT (eft)
+        payment_method: 'eft,zp,ss,dc', // Credit card (cc) and EFT (eft)
     };
 
     const queryString = new URLSearchParams(paymentData).toString();
