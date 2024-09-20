@@ -25,12 +25,13 @@ const getStoreItemBySlug = async (slug) => {
 
 const StoreItem = () => {
     const [data, setData] = useState(null);
+    const [isLoading, setIsLoading] = useState(false); // Track loading state
+    const [errorMessage, setErrorMessage] = useState(''); // Track error messages
     const path = usePathname();
     console.log("🚀 ~ page ~ path:", path);
 
     useEffect(() => {
         const fetchData = async () => {
-            // Ensure that the path is correctly split to get the slug
             const pathParts = path.split('/');
             const slug = pathParts[pathParts.length - 1] || null; // Assuming slug is the last part of the path
 
@@ -45,6 +46,9 @@ const StoreItem = () => {
     }, [path]);
 
     const handlePayment = async () => {
+        setIsLoading(true);  // Disable the button and show loading state
+        setErrorMessage(''); // Clear any previous errors
+
         try {
             const response = await fetch('/api/payfast-initiate', {
                 method: 'POST',
@@ -67,10 +71,13 @@ const StoreItem = () => {
             if (paymentUrl) {
                 window.location.href = paymentUrl; // Redirect user to PayFast payment page
             } else {
-                console.error('Payment URL not found in response.');
+                setErrorMessage('Payment URL not found in response.');
             }
         } catch (error) {
             console.error('Error initiating payment:', error);
+            setErrorMessage('Error initiating payment. Please try again.');
+        } finally {
+            setIsLoading(false);  // Re-enable the button after processing
         }
     };
     
@@ -121,12 +128,18 @@ const StoreItem = () => {
                         <p className="font-semibold text-2xl">{data.title}</p>
                         <p className=" font-extralight text-[1rem]">{data.description}</p>
                         <p className="font-semibold text-xl">R{data.price}</p>
+
+                        {/* Display error message if any */}
+                        {errorMessage && <p className="text-red-500">{errorMessage}</p>}
+
                         <button
-                            className='xl:w-[25%] w-[50%] h-14 text-white text-[1rem] rounded-full bg-[#455CE9] hover:bg-[#455CE9]/50 transition-all duration-300'
+                            className={`xl:w-[25%] w-[50%] h-14 text-white text-[1rem] rounded-full bg-[#455CE9] hover:bg-[#455CE9]/50 transition-all duration-300 ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
                             onClick={handlePayment}
+                            disabled={isLoading}  // Disable the button while loading
                         >
-                            Get the code
+                            {isLoading ? 'Processing...' : 'Get the code'}
                         </button>
+
                         <div className='flex items-center mt-6 gap-2'>
                             <Link href="https://www.tiktok.com/@tshilidzirambuda2" target='_blank' className="text-[1rem] !justify-self-end cursor-pointer hover:bg-[#dfe3ff] transition-all duration-300 p-3 rounded-full w-fit"><IoLogoTiktok /></Link>
                             <Link href="https://www.facebook.com/tshilitech" target='_blank' className="text-[1rem] !justify-self-end cursor-pointer hover:bg-[#dfe3ff] transition-all duration-300 p-3 rounded-full w-fit"><FaFacebookF /></Link>
