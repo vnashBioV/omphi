@@ -13,20 +13,26 @@ export default function PaymentSuccessPage() {
     
         const fetchDownloadUrl = async () => {
             try {
-                const response = await fetch(`/api/verify-token?m_payment_id=${m_payment_id}`);
+                const response = await fetch('/api/verify-token', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ m_payment_id }), // Send m_payment_id in the body
+                });
+
                 const data = await response.json();
     
                 if (data.success) {
                     setDownloadUrl(data.sourceCodeUrl); // Set the source code download URL
-                    setLoading(false);
                 } else {
                     setErrorMessage(data.message);
-                    setLoading(false);
                 }
                     
             } catch (error) {
                 setErrorMessage('Error fetching payment status.');
-                setLoading(false);
+            } finally {
+                setLoading(false); // Ensure loading is false after the fetch
             }
         };
     
