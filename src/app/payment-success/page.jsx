@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { FaCheckCircle } from "react-icons/fa";
+import Loader from '../../components/Loader';
 
 export default function PaymentSuccessPage() {
     const [downloadUrl, setDownloadUrl] = useState(null);
@@ -48,8 +49,8 @@ export default function PaymentSuccessPage() {
         <div className='text-black h-screen flex gap-6 justify-center items-center flex-col'>
             {loading ? (
                 <div>
-                    <p>Verifying your payment...</p>
-                    {/* You can add a loading spinner here */}
+                    {/* <p>Verifying your payment...</p> */}
+                    <Loader/>
                 </div>
             ) : (
                 <>
