@@ -40,7 +40,6 @@ export async function POST(req) {
             amount,
             paymentStatus: 'Pending',
             expirationTime: new Date(Date.now() + 15 * 60 * 1000),  // Set expiration time to 15 minutes
-            sourceCodeUrl: 'https://sourcecode.co.za/',  // Static URL for now, update as necessary
         });
         
         // Return the PayFast payment URL to the client
