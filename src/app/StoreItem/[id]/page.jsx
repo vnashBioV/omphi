@@ -133,7 +133,7 @@ const StoreItem = () => {
                         {errorMessage && <p className="text-red-500">{errorMessage}</p>}
 
                         <button
-                            className={`xl:w-[25%] w-[50%] h-14 text-white text-[1rem] rounded-full bg-[#455CE9] hover:bg-[#455CE9]/50 transition-all duration-300 ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                            className={`xl:w-[25%] w-[67%] h-14 text-white text-[1rem] rounded-full bg-[#455CE9] hover:bg-[#455CE9]/50 transition-all duration-300 ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
                             onClick={handlePayment}
                             disabled={isLoading}  // Disable the button while loading
                         >
