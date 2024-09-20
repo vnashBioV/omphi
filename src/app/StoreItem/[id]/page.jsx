@@ -87,9 +87,19 @@ const StoreItem = () => {
         <div className='text-black flex justify-center items-center bg-[#e0e3f3] xl:h-[100vh]'>
             <div className='xl:w-[50%] w-full bg-[white] mx-auto flex flex-col rounded-xl p-6'>
                 <div className='flex items-center'>
-                    <p className="mr-3 xl:text-[1rem] text-[.7rem] text-[gray]">Tshilitech</p>
+                    <Link 
+                        href="/"
+                        className="mr-3 xl:text-[1rem] text-[.7rem] text-[gray]"
+                    >
+                        Tshilitech
+                    </Link>
                     <p className="mr-3 text-[gray]"><MdChevronRight /></p>
-                    <p className="mr-3 xl:text-[1rem] text-[.7rem] text-[gray]">Store</p>
+                    <Link 
+                        href="/store"
+                        className="mr-3 xl:text-[1rem] text-[.7rem] text-[gray]"
+                    >
+                        Store
+                    </Link>
                     <p className="mr-3 text-[gray]"><MdChevronRight /></p>
                     <p className="mr-3 xl:text-[1rem] text-[.7rem] text-[gray]">{data.title}</p>
                 </div>
