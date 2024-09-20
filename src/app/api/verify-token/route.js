@@ -1,5 +1,4 @@
 import { getTransactionByPaymentId, getStoreByItemName } from '../../lib/db';
-import { getFileAsset } from '@sanity/asset-utils'; // Importing the asset utility
 import { NextResponse } from 'next/server';
 
 export async function GET(req) {
@@ -30,12 +29,18 @@ export async function GET(req) {
         const store = await getStoreByItemName(transaction.item_name);
         console.log("🚀 ~ GET ~ transaction.item_name:", transaction.item_name);
 
-        if (!store || !store.sourceCodeFile) {
+        if (!store || !store.sourceCodeFile || !store.sourceCodeFile.asset || !store.sourceCodeFile.asset._ref) {
             return NextResponse.json({ success: false, message: 'Source code not found in store' });
         }
 
-        // Get the file asset URL
-        const sourceCodeUrl = getFileAsset(store.sourceCodeFile); // Use getFileAsset to retrieve the URL
+        // Manually build the file URL
+        const assetRef = store.sourceCodeFile.asset._ref;
+        const projectId = process.env.SANITY_PRODUCT_ID;
+        const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET;
+
+        // Sanity file references are typically in the format: file-<hash>-<extension>
+        const [, fileId, fileExtension] = assetRef.split('-');
+        const sourceCodeUrl = `https://cdn.sanity.io/files/${projectId}/${dataset}/${fileId}.${fileExtension}`;
 
         // Return the download URL for the source code
         return NextResponse.json({ success: true, sourceCodeUrl });
