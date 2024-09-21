@@ -30,7 +30,7 @@ export async function POST(req) {
     };
 
     const queryString = new URLSearchParams(paymentData).toString();
-    const paymentUrl = `https://www.payfast.co.za/eng/process?${queryString}`;
+    const paymentUrl = `https://sandbox.payfast.co.za/eng/process?${queryString}`;
 
     try {
         // Save the transaction details in the database
