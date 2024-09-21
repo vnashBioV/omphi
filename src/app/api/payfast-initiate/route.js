@@ -13,7 +13,7 @@ export async function POST(req) {
     const token = `token-${Math.random().toString(36).substr(2, 9)}`;
     const m_payment_id = `item-${Math.random().toString(36).substr(2, 9)}`;
 
-    // Prepare the payment data for PayFast
+    // Prepare the payment data for PayFast without restricting payment methods
     const paymentData = {
         merchant_id: process.env.PAYFAST_MERCHANT_ID,
         merchant_key: process.env.PAYFAST_MERCHANT_KEY,
@@ -26,6 +26,7 @@ export async function POST(req) {
         amount,
         item_name,
         custom_str1: token,  // Pass token to track payment later
+        // Leave out payment_method to allow all methods
     };
 
     const queryString = new URLSearchParams(paymentData).toString();
