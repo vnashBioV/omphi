@@ -6,7 +6,7 @@ import {
 } from '../../lib/db';
 
 const verifyPayFastIPN = async (body) => {
-    const payfastUrl = 'https://sandbox.payfast.co.za/eng/query/validate';
+    const payfastUrl = 'https://www.payfast.co.za/eng/query/validate';
     
     const response = await fetch(payfastUrl, {
         method: 'POST',
