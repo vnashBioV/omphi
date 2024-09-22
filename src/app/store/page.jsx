@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const getData = async () => {
   const query = `*[_type == 'store']`
-  const data = await client.fetch(query, { cache: 'no-cache' });
+  const data = await client.fetch(query, { cache: 'no-store' });
   return data;
 }
 
