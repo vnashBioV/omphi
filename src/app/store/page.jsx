@@ -21,12 +21,12 @@ const Store = async() => {
           <Link href="/store" className="ml-2"><b>Store</b></Link>
         </div>
         <div className="xl:w-[50%] w-full flex justify-center text-white relative items-center flex-col">
-          <p className="text-center z-[1] font-normal xl:text-[2rem] text-[1.4rem]  py-6"> High-Quality Digital <br /> Products</p>
+          <p className="text-center z-[1] font-normal xl:text-[2rem] text-[1.4rem]  py-6"> High Quality Digital <br /> Products</p>
           <p className="xl:text-[1.2rem] text-[.8rem] text-center">Boost Your Development Efficiency</p>
         </div>
       </div>
       <div className='xl:w-[50%] w-full bottom-0 lx:mb-10 m-10 xl:absolute xl:h-[80%] xl:max-h-[60%] h-[100vh] border-[1px] scrollbar-hide overflow-y-scroll bg-[white] mx-auto flex flex-col rounded-xl p-6'>
-        <div className="w-full flex justify-between xl:grid-cols-3 grid-cols-1 gap-8 flex-wrap items-center mt-5">
+        <div className="w-full flex xl:grid-cols-3 grid-cols-1 gap-8 flex-wrap items-center mt-5">
           {store.length > 0 && store.map((storeItem, index) => (
             <> 
               <Link 

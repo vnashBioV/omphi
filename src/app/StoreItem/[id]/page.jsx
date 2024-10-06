@@ -28,7 +28,6 @@ const StoreItem = () => {
     const [isLoading, setIsLoading] = useState(false); // Track loading state
     const [errorMessage, setErrorMessage] = useState(''); // Track error messages
     const path = usePathname();
-    console.log("🚀 ~ page ~ path:", path);
 
     useEffect(() => {
         const fetchData = async () => {
