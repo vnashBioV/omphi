@@ -20,7 +20,6 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
 const Post = ({posts}) => {    
-    console.log("🚀 ~ Post ~ posts:", posts)
     const months = [
         "Jan", "Feb", "Mar", "Apr", "May", "Jun",
         "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"

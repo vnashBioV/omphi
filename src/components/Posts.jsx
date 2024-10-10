@@ -4,8 +4,7 @@ import { client } from "../app/lib/sanity";
 
 const getData = async () => {
     const query = `*[_type == 'post']`
-    const data = await client.fetch(query, { cache: 'no-cache' });
-    console.log("Fetched posts:", data); // Add this line
+    const data = await client.fetch(query, { cache: 'no-store' });
     return data;
 }
 
