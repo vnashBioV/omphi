@@ -105,8 +105,6 @@ const Banner = () => {
               </motion.div>
             </div>
           </div>
-         
-          
           
         </div>
         <motion.div
