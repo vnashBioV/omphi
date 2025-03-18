@@ -84,17 +84,17 @@ const PostPage = () => {
               </div>
               <div className={`flex flex-col ml-4 justify-center ${!authorData && "bg-[#bdbdbd] w-[205px] h-[65px] rounded-xl"} `}>
                 <p className='text-[grey] font-[500]'>{authorData?.name}</p>
-                <p className='text-[#616161] text-[.8rem]'>
+                <div className='text-[#616161] text-[.8rem]'>
                   <PortableText value={authorData?.bio} components={ptComponents}/>
-                </p>
+                </div>
               </div>
             </div>
             <h3 className={`text-black text-[2rem] font-[700] ${!postData && "bg-[#bdbdbd] xl:w-[544px] w-full xl:h-[144px] rounded-xl"}`}>{postData?.title}</h3>
 
             <div className={`w-full h-[700px] mx-h-[700px] blog-paragraph ${!postData && "bg-[#bdbdbd] w-[544px] h-[344px] mx-h-[344px] rounded-xl"} overflow-scroll scrollbar-hide`}>
-              <p className='text-black font-[400]'>
+              <div className='text-black font-[400]'>
                 <PortableText value={postData?.body} components={ptComponents}/>
-              </p>
+              </div>
             </div>
           </div>
           <div className={`xl:h-[500px] xl:rounded-none rounded-xl mb-[3rem] xl:mb-0 xl:w-[50%] w-full ${!postData && "bg-[#bdbdbd] xl:w-[544px] w-full xl:h-[344px] rounded-xl"} border`}>

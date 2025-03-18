@@ -58,7 +58,7 @@ const Contact = () => {
         </div>
         <div className='w-full flex xl:flex-row flex-col'>
           <div className='xl:h-[650px] h-[350px] xl:w-[35%] w-full flex justify-center items-center'>
-              <Image src="/contact.png" width={1424} height={3280}  className='w-[45%] h-full object-contain'/>
+              <Image src="/contact.png" alt="contact" width={1424} height={3280}  className='w-[45%] h-full object-contain'/>
           </div>
           <div className='xl:h-[650px] my-[2rem] xl:w-[65%] w-full flex flex-col justify-center'>
             <form 

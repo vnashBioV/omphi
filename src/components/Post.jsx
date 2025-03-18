@@ -19,14 +19,15 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
-const Post = ({posts}) => {    
+const Post = ({ posts }) => {
     const months = [
         "Jan", "Feb", "Mar", "Apr", "May", "Jun",
         "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-    ];  
+    ]; 
+    
+    const sortedPosts = posts ? [...posts].sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)) : [];
 
-    const sortedPosts = posts ?  posts.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)) : posts;
-    const isTabletOrMobile = useMediaQuery({ query: '(max-width: 768px)' })
+    const isTabletOrMobile = useMediaQuery({ query: '(max-width: 768px)' });
 
     return (
         <div className='container flex xl:flex-row flex-col xl:px-0 px-6 justify-between items-center mx-auto xl:mb-[15rem] mb-[5rem]'>
@@ -101,4 +102,4 @@ const Post = ({posts}) => {
     )
 }
 
-export default Post
+export default Post;

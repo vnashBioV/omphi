@@ -107,7 +107,7 @@ const About = () => {
               viewport={{once: false, amount: 0.3}} 
               className='w-[111px] h-[543px]'
             >
-              <Image src="/about.svg" width={111} height={543} className='object-contain w-full h-full'  />  
+              <Image src="/about.svg" alt='about' width={111} height={543} className='object-contain w-full h-full'  />  
             </motion.div>
           </div>
         </div>

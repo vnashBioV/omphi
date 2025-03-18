@@ -125,7 +125,7 @@ const Banner = () => {
                   className="relative w-full h-full flex justify-center items-center"
                 >
                   <div className='w-full h-full'>
-                    <Image src="homeart.svg" className='w-full h-full object-contain' width={466} height={323}/>
+                    <Image src="homeart.svg" alt='home art' className='w-full h-full object-contain' width={466} height={323}/>
                   </div>
                 
               </MouseParallaxChild>
