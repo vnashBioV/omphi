@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FaArrowRightLong } from "react-icons/fa6";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { useForm } from "react-hook-form";
@@ -24,22 +24,37 @@ const Contact = () => {
     formState: { errors },
   } = useForm();
 
+  useEffect(() => {
+    console.log(emailsent)
+  }, [emailsent])
+  
+
   const formSubmit = async (data) => {
-    setLoader(true);
     console.log(data);
-    try {
-      await sendContactForm(data);
-      setLoader(false);
-      setEmailSent(true)
-      setTimeout(() =>{
-        setEmailSent(false);
-        reset()
-      },4000)
-    } catch (error) {
-      setEmailSent(false)
-      setError(true)
-      setErrorMessage(error.message)
-    }
+      try {
+        setLoader(true);
+        const response = await fetch("/api/contact", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data), // Adjust the payload accordingly
+        });
+        const result = await response.json();
+        if(result){
+          setLoader(false);
+          setEmailSent(true)
+          setTimeout(() =>{
+            setEmailSent(false);
+            reset()
+          },4000)
+        } 
+      } catch (error) {
+        console.error("Error:", error);
+        setEmailSent(false)
+        setError(true)
+        setErrorMessage(error.message)
+      }
   };
 
   return (
