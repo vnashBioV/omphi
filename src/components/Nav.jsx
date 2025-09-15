@@ -34,19 +34,6 @@ const Nav = ({containerStyles, linkStyles}) => {
           )
         })}
 
-        <NextLink 
-            href={"/store"}
-            className={`cursor-pointer ml-[2rem] font-[400] text-black hover:tracking-wide text-[.9rem] hover:border-b-[1px] hover:border-black transition-all duration-300`}
-        >
-            Store
-        </NextLink>
-        <NextLink 
-            href={"/prices"}
-            className={`cursor-pointer ml-[2rem] font-[400] text-black hover:tracking-wide text-[.9rem] hover:border-b-[1px] hover:border-black transition-all duration-300`}
-        >
-            Prices
-        </NextLink>
-
         <div className='ml-[2.5rem] w-[130px] h-[53px] rounded-full flex justify-center items-center overflow-hidden bg-transparent'>
             <Link
                 to='contact'
@@ -71,11 +58,11 @@ const Nav = ({containerStyles, linkStyles}) => {
                     justify-center
                     items-center
                     border-[2px] 
-                    border-black
+                    border-[#495FEF]
                     rounded-full
                     group 
                     relative 
-                    after:bg-black 
+                    after:bg-[#495FEF]
                     active:shadow-md 
                     active:ring-2
                     BtnEffect

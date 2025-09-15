@@ -28,7 +28,7 @@ const Header = () => {
             href="#"
             className='w-[90px] h-[90px] bg-[#fff] p-[.6rem] rounded-full'
           >
-              <Image src={'/logo.png'} alt='logo' width={198} height={150} className='w-full h-full object-contain'/>
+              <p className='text-black font-bold text-2xl'>Omphile</p>
           </Link>
           <div className='flex w-[50%] h-[90px] justify-end'>
             <Nav containerStyles="flex justify-between items-center gap-3" linkStyles="w-fit flex justify-center items-center !no-underline"/>

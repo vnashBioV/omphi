@@ -53,26 +53,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <title>tshilitech</title>
+        <title>Omphile website</title>
         <meta name="description" content="Websites, Apps, and Digital Solutions Tailored Just for You" />
         <meta name="keywords" content="websites, web development, web design, applications, application development, seo, design, react, nextjs, javascript, html, css" />
-        {/* Google Analytics */}
-        <Script
-          strategy="afterInteractive"
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
-        />
-        <Script
-          id="google-analytics"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}');
-            `,
-          }}
-        />
+        
       </head>
       <body className={`${poppins.variable} overflow-x-hidden relative`}>
         {!hideHeaderFooter && <Header />}

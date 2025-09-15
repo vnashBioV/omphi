@@ -28,7 +28,7 @@ const Banner = () => {
   };
 
   return (
-    <div className='w-full flex relative justify-center'>
+    <div className='w-full flex relative justify-center mb-20'>
        {/* video */}
       {/* <video 
         autoPlay 
@@ -48,21 +48,11 @@ const Banner = () => {
             viewport={{once: false, amount: 0.3}} 
             className='xl:text-[3.3rem] text-[2.3rem] font-[700] xl:leading-[95px] leading-[49px] text-black'
           >
-              Websites, Apps, and <br className='md:flex hidden'/> <span className='xl:bg-black rounded-xl px-3 xl:text-white'>Digital Solutions</span>  <br className='md:flex hidden'/> Tailored Just for You
+            Classy Developer/ <br className='xl:flex hidden'/> 
+            UI UX Designer <br className='md:flex hidden'/> 
           </motion.h1>
           <div className='w-full flex '>
-            {/* socials */}
-            <motion.div
-              variants={fadeIn('up', 0.4)}
-              initial='hidden'
-              whileInView={'show'}
-              viewport={{once: false, amount: 0.3}}  
-              className='text-black flex flex-col items-center'
-            >
-              <NextLink href="https://www.facebook.com/tshilitech" target='_blank' className='rounded-full -rotate-90 hover:bg-gray-300 p-2 text-[1.4rem] cursor-pointer transition-all duration-300'><FaFacebookF /></NextLink>
-              <NextLink href="https://www.tiktok.com/@tshilidzirambuda2" target='_blank' className='rounded-full -rotate-90 hover:bg-gray-300 p-2 text-[1.4rem] cursor-pointer transition-all duration-300 mt-2'><IoLogoTiktok /></NextLink>
-              <p className='h-7 w-[.2rem] bg-black mt-2'></p>
-            </motion.div>
+            
             <div className='ml-6'>
               <motion.p 
                 variants={fadeIn('right', 0.4)}
@@ -71,7 +61,9 @@ const Banner = () => {
                 viewport={{once: false, amount: 0.3}} 
                 className='text-[1.1rem] font-[400] text-black'
               >
-                  Building stunning websites and smart applications <br className='xl:flex hidden'/> well suited for your business needs
+                  Empowering ideas through beautiful design and functional code — <br className='xl:flex hidden'/> 
+                  where creativity meets precision, and every line of code <br className='xl:flex hidden'/> 
+                  is written with care, clarity, and confidence. well suited for your business needs
               </motion.p>
 
               <motion.div 
@@ -88,18 +80,9 @@ const Banner = () => {
                   smooth={true}
                   spy
                   offset={-50}
-                  className='flex justify-between items-center'
+                  className='flex justify-between items-center bg-[#495FEF] px-10 py-4 rounded-full hover:opacity-75 transition-all duration-300'
                 >
-                  <p className={`text-black xl:text-[2rem] text-[1.4rem]  ${send ? "border-0 tracking-wide" : "border-b-[2px] border-black"} transition-all duration-300  ease-in-out w-fit`}>Get in touch</p>
-                  <div 
-                    className={`h-[58px] w-[58px] cursor-pointer rounded-full flex transition-all ease-in-out duration-500 justify-center ${send ? "bg-white" : "bg-black"} items-center ml-6`}
-                  >
-                    {!send ? 
-                      <FaArrowRight className='text-white transition-all duration-300 text-[1.5rem]'/>
-                      :
-                      <MdSend className='text-[1.5rem] text-black transition-all duration-300'/>
-                    }
-                  </div>
+                  <p className={`text-white`}>Reach out</p>
                 </Link>
               
               </motion.div>
@@ -125,7 +108,7 @@ const Banner = () => {
                   className="relative w-full h-full flex justify-center items-center"
                 >
                   <div className='w-full h-full'>
-                    <Image src="/homeart.png" alt='home art' className='w-full h-full object-contain' width={466} height={323}/>
+                    <Image src="/homeart.svg" alt='home art' className='w-full h-full object-contain' width={466} height={323}/>
                   </div>
                 
               </MouseParallaxChild>

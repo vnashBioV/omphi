@@ -75,5 +75,5 @@ html{
 }
 
 .active{
-    @apply tracking-wide border-b-[1px] xl:border-black border-white
+    @apply tracking-wide border-b-[1px] xl:border-[#495FEF] border-white
 }
