@@ -28,18 +28,6 @@ const MobileNav = ({setIsActive}) => {
                 </Link>
             )
             })}
-            <NextLink 
-                href={"/store"}
-                className={`cursor-pointer w-fit font-[400] pointer-events-auto text-white hover:tracking-wide text-[1.3rem] hover:border-b-[1px] hover:border-black transition-all duration-300`}
-            >
-                Store
-            </NextLink>
-            <NextLink 
-                href={"/prices"}
-                className={`cursor-pointer w-fit font-[400] pointer-events-auto text-white hover:tracking-wide text-[1.3rem] hover:border-b-[1px] hover:border-black transition-all duration-300`}
-            >
-                Prices
-            </NextLink>
         </nav>
     )
 }

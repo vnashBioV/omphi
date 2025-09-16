@@ -37,7 +37,7 @@ const Work = () => {
                 <div className='xl:w-[45%] w-full border-black flex justify-between'>
                     <div className='w-full'>
                         <div className='h-[500px] border mb-3'>
-                            <a target="_blank" href="https://www.figma.com/design/cXj7zJgiWeAnPIR6ecs0Wg/Messaging---Chatbox-App-Design--Community-?node-id=0-1&t=AuvVvfKVONAS3Nl3-1" className='w-full h-full border !flex justify-center items-center'>
+                            <a target="_blank" href="https://www.figma.com/design/lypqrEVzbnMxPJwQNzXtPR/Messaging---Chatbox-App-Design?node-id=0-1&t=R1Tjyly2BLHf9vFt-1" className='w-full h-full border !flex justify-center items-center'>
                                 <Image src="/mobile-work.png" alt='home art' className='w-full h-full object-contain' width={840} height={400}/>
                             </a>
                         </div>
